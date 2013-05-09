@@ -15,9 +15,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (nonatomic) int flipCount;
+@property (nonatomic) int gameMode;
+
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastResultLabel;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *gameModeButton;
 @end
 
 @implementation CardGameViewController
@@ -32,6 +35,7 @@
 
 - (void )setCardButtons:(NSArray *)cardButtons {
     _cardButtons = cardButtons;
+    self.gameMode  = 2;
     [self updateUI];
 }
 
@@ -47,13 +51,20 @@
     }
     [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
     [self updateUI];
+    [self.gameModeButton setEnabled:NO];
 }
 
 - (IBAction)Deal:(id)sender {
+   [self Restart];
+}
+
+- (void)Restart {
     self.game = nil;
     self.flipCount = 0;
-   [self updateUI];
+    [self updateUI];
+    [self.gameModeButton setEnabled:YES ];
 }
+
 
 - (void) updateUI {
     for (UIButton *cardButton in self.cardButtons) {
@@ -66,6 +77,11 @@
     }
     self.lastResultLabel.text = self.game.lastResult;
     self.scoreLabel.text = [NSString stringWithFormat:@"Score :%d", self.game.score];
+}
+- (IBAction)GameModeChanged:(UISegmentedControl *)sender {
+    NSLog(@"Game mode changed to %ld",(long)sender.selectedSegmentIndex);
+    self.gameMode = 2 + sender.selectedSegmentIndex;
+    [self Restart];
 }
 
 @end

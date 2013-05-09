@@ -256,11 +256,23 @@
                                     <action selector="Deal:" destination="2" eventType="touchUpInside" id="bHW-0t-GOs"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="5lM-PK-FXD">
+                                <rect key="frame" x="117" y="344" width="161" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Match 2"/>
+                                    <segment title="Match 3"/>
+                                </segments>
+                                <connections>
+                                    <action selector="GameModeChanged:" destination="2" eventType="valueChanged" id="5qM-x0-du9"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="flipsLabel" destination="IkV-um-mzo" id="mTz-md-sFp"/>
+                        <outlet property="gameModeButton" destination="5lM-PK-FXD" id="MVC-sC-wpJ"/>
                         <outlet property="lastResultLabel" destination="dYM-ts-YIK" id="osQ-aY-A7m"/>
                         <outlet property="scoreLabel" destination="zHg-py-qu7" id="76U-ag-vke"/>
                         <outletCollection property="cardButtons" destination="s4t-da-qgw" id="BoU-yA-Hzs"/>
@@ -290,8 +302,10 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CardGameViewController.h"/>
             <relationships>
                 <relationship kind="action" name="Deal:"/>
+                <relationship kind="action" name="GameModeChanged:" candidateClass="UISegmentedControl"/>
                 <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="gameModeButton" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="lastResultLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
                 <relationship kind="outletCollection" name="cardButtons" candidateClass="UIButton"/>
