@@ -17,6 +17,7 @@
 
 @property (nonatomic,strong,readonly) NSString *lastResult;
 @property (nonatomic,readonly)int score;
+@property (nonatomic) int noOfCardsToMatch;
 
 @end
 
