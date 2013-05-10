@@ -10,6 +10,7 @@
 		A3AD7A571737A97A0001D3F7 /* CardMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = A3AD7A561737A97A0001D3F7 /* CardMatchingGame.m */; };
 		A3AEA4521731637F00D2FA58 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = A3AEA44F1731637F00D2FA58 /* Deck.m */; };
 		A3AEA4531731637F00D2FA58 /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = A3AEA4511731637F00D2FA58 /* PlayingCard.m */; };
+		A3BF0559173D106900116506 /* bag.gif in Resources */ = {isa = PBXBuildFile; fileRef = A3BF0558173D106900116506 /* bag.gif */; };
 		A3DBAFE2173110D100CCBBFB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3DBAFE1173110D100CCBBFB /* UIKit.framework */; };
 		A3DBAFE4173110D100CCBBFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3DBAFE3173110D100CCBBFB /* Foundation.framework */; };
 		A3DBAFE6173110D100CCBBFB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3DBAFE5173110D100CCBBFB /* CoreGraphics.framework */; };
@@ -32,6 +33,7 @@
 		A3AEA44F1731637F00D2FA58 /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Deck.m; path = Model/Deck.m; sourceTree = "<group>"; };
 		A3AEA4501731637F00D2FA58 /* PlayingCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayingCard.h; path = Model/PlayingCard.h; sourceTree = "<group>"; };
 		A3AEA4511731637F00D2FA58 /* PlayingCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayingCard.m; path = Model/PlayingCard.m; sourceTree = "<group>"; };
+		A3BF0558173D106900116506 /* bag.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bag.gif; sourceTree = "<group>"; };
 		A3DBAFDE173110D100CCBBFB /* Matchismo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchismo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3DBAFE1173110D100CCBBFB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A3DBAFE3173110D100CCBBFB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -119,6 +121,7 @@
 				A3DBAFF3173110D100CCBBFB /* Default.png */,
 				A3DBAFF5173110D100CCBBFB /* Default@2x.png */,
 				A3DBAFF7173110D100CCBBFB /* Default-568h@2x.png */,
+				A3BF0558173D106900116506 /* bag.gif */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				A3DBAFF6173110D100CCBBFB /* Default@2x.png in Resources */,
 				A3DBAFF8173110D100CCBBFB /* Default-568h@2x.png in Resources */,
 				A3DBAFFB173110D100CCBBFB /* MainStoryboard.storyboard in Resources */,
+				A3BF0559173D106900116506 /* bag.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

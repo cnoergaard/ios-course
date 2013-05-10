@@ -29,13 +29,21 @@
 - (CardMatchingGame*)game {
     if (!_game) _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
                                                           usingDeck:[[PlayingCardDeck alloc] init]];
+    _game.noOfCardsToMatch = self.gameMode;
     return _game;
 }
 
 
 - (void )setCardButtons:(NSArray *)cardButtons {
+    UIImage *cardBackImage = [UIImage imageNamed:@"bag.gif"];
     _cardButtons = cardButtons;
-    self.gameMode  = 2;
+    
+    for (UIButton *cardButton in cardButtons) {
+        [cardButton setImage:nil forState:UIControlStateSelected];
+        [cardButton setImage:nil forState:UIControlStateSelected|UIControlStateDisabled];
+
+    }
+    self.gameMode = 2;
     [self updateUI];
 }
 
@@ -67,10 +75,14 @@
 
 
 - (void) updateUI {
+    UIImage *cardBackImage = [UIImage imageNamed:@"bag.gif"];
     for (UIButton *cardButton in self.cardButtons) {
         Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
         [cardButton setTitle:card.contents forState:UIControlStateSelected];
         [cardButton setTitle:card.contents forState:UIControlStateSelected|UIControlStateDisabled];
+        cardButton.imageEdgeInsets = UIEdgeInsetsMake(4,4,4,4);
+        [cardButton setImage:(card.isFaceUp?nil:cardBackImage)forState:UIControlStateNormal];
+
         cardButton.selected = card.isFaceUp;
         cardButton.enabled = !card.isUnplayable;
         cardButton.alpha = card.isUnplayable? 0.3 : 1.0;
@@ -79,7 +91,6 @@
     self.scoreLabel.text = [NSString stringWithFormat:@"Score :%d", self.game.score];
 }
 - (IBAction)GameModeChanged:(UISegmentedControl *)sender {
-    NSLog(@"Game mode changed to %ld",(long)sender.selectedSegmentIndex);
     self.gameMode = 2 + sender.selectedSegmentIndex;
     [self Restart];
 }
