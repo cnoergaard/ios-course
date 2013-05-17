@@ -8,7 +8,7 @@
 
 #import "SetGameViewController.h"
 #import "SetDeck.h"
-#import "Set.h"
+#import "SetCard.h"
 #import "Deck.h"
 #import "CardMatchingGame.h"
 
@@ -17,6 +17,9 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (nonatomic) int flipCount;
 @property (nonatomic) int gameMode;
+@property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lastResultLabel;
 
 @property (strong, nonatomic) CardMatchingGame *game;
 @end
@@ -40,7 +43,7 @@
 - (void) setFlipCount:(int)flipCount
 {
     _flipCount = flipCount;
-    //self.flipsLabel.text = [NSString stringWithFormat:@"Flips :%d", self.flipCount];
+    self.flipsLabel.text = [NSString stringWithFormat:@"Flips :%d", self.flipCount];
 }
 
 - (IBAction)flipCard:(UIButton *)sender {
@@ -71,9 +74,9 @@
         for (UIButton *cardButton in self.cardButtons) {
     
         Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
-        if ([card isKindOfClass:[Set class]])
+        if ([card isKindOfClass:[SetCard class]])
         {
-            Set *setcard = (Set *)card;
+            SetCard *setcard = (SetCard *)card;
             NSMutableString *symbols = [[NSMutableString alloc] init];
             NSUInteger number = [setcard.number intValue];
             for (NSUInteger i=0; i<number; i++)
@@ -92,7 +95,7 @@
         cardButton.enabled = !card.isUnplayable;
         cardButton.alpha = card.isUnplayable? 0.3 : 1.0;
     }
-//    self.lastResultLabel.text = self.game.lastResult;
+    self.lastResultLabel.text = self.game.lastResult;
  //   self.scoreLabel.text = [NSString stringWithFormat:@"Score :%d", self.game.score];
 }
 

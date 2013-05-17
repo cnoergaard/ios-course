@@ -305,7 +305,7 @@
             </objects>
             <point key="canvasLocation" x="-372" y="5"/>
         </scene>
-        <!--Set Game View Controller - Item-->
+        <!--Set Game View Controller - Set-->
         <scene sceneID="A4W-uz-UYm">
             <objects>
                 <viewController id="A3G-3I-fio" customClass="SetGameViewController" sceneMemberID="viewController">
@@ -673,11 +673,50 @@
                                     <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="3gs-v1-Z3n"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Flips: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hGR-RN-dZc">
+                                <rect key="frame" x="20" y="358" width="120" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Score:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kks-WG-qUz">
+                                <rect key="frame" x="199" y="358" width="85" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Result:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xVI-qu-LCd">
+                                <rect key="frame" x="20" y="318" width="264" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="inV-uW-U9i">
+                                <rect key="frame" x="128" y="348" width="49" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Deal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="Deal:" destination="A3G-3I-fio" eventType="touchUpInside" id="Thk-yE-an9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Lfi-wh-D6i"/>
+                    <tabBarItem key="tabBarItem" title="Set" id="Lfi-wh-D6i"/>
                     <connections>
+                        <outlet property="flipsLabel" destination="hGR-RN-dZc" id="SDw-MY-9oy"/>
+                        <outlet property="lastResultLabel" destination="xVI-qu-LCd" id="YAU-o4-LDU"/>
+                        <outlet property="scoreLabel" destination="kks-WG-qUz" id="vc7-Ga-Bf1"/>
                         <outletCollection property="cardButtons" destination="ECn-sO-0i8" id="P9g-rg-2oh"/>
                         <outletCollection property="cardButtons" destination="rXs-kn-otf" id="hfQ-QD-sw9"/>
                         <outletCollection property="cardButtons" destination="45P-kA-2ct" id="5O4-8g-lCb"/>
@@ -718,8 +757,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CardGameViewController.h"/>
             <relationships>
                 <relationship kind="action" name="Deal:"/>
-                <relationship kind="action" name="GameModeChanged:" candidateClass="UISegmentedControl"/>
-                <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="gameModeButton" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="lastResultLabel" candidateClass="UILabel"/>
@@ -733,6 +770,9 @@
                 <relationship kind="action" name="Deal:"/>
                 <relationship kind="action" name="GameModeChanged:" candidateClass="UISegmentedControl"/>
                 <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lastResultLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
                 <relationship kind="outletCollection" name="cardButtons" candidateClass="UIButton"/>
             </relationships>
         </class>

@@ -6,9 +6,10 @@
 //  Copyright (c) 2013 cn. All rights reserved.
 //
 
-#import "Set.h"
+#import "SetCard.h"
 
-@implementation Set
+@implementation SetCard
+
 @synthesize symbol = _symbol;
 
 + (NSArray *)validShadings
@@ -20,7 +21,7 @@
 
 - (void )setShading:(NSString *)shading
 {
-    if ([[Set validShadings] containsObject:shading]) {
+    if ([[SetCard validShadings] containsObject:shading]) {
         _shading = shading;
     }
 }
@@ -34,7 +35,7 @@
 
 - (void )setSymbol:(NSString *)symbol
 {
-    if ([[Set validSymbols] containsObject:symbol]) {
+    if ([[SetCard validSymbols] containsObject:symbol]) {
         _symbol = symbol;
     }
 }
@@ -55,7 +56,7 @@
 
 - (void )setNumber:(NSString *)number
 {
-    if ([[Set validNumbers] containsObject:number]) {
+    if ([[SetCard validNumbers] containsObject:number]) {
         _number = number;
     }
 }
@@ -70,7 +71,7 @@
 
 - (void )setColor:(NSString *)color
 {
-    if ([[Set validColors] containsObject:color]) {
+    if ([[SetCard validColors] containsObject:color]) {
         _color = color;
     }
 }
@@ -109,14 +110,14 @@
     if (otherCards.count == 2) {
         Card *firstCard = [otherCards lastObject];
         Card *secondCard = [otherCards objectAtIndex:0];
-        if ([firstCard isKindOfClass:[Set class]] && [secondCard isKindOfClass:[Set class]])
+        if ([firstCard isKindOfClass:[SetCard class]] && [secondCard isKindOfClass:[SetCard class]])
         {
-            Set *first = (Set *)firstCard;
-            Set *second  = (Set *)secondCard;
-            if ([Set propMatch:self.symbol  second:first.symbol  third:second.symbol] &&
-                [Set propMatch:self.shading second:first.shading third:second.shading] &&
-                [Set propMatch:self.number  second:first.number  third:second.number] &&
-                [Set propMatch:self.color   second:first.color   third:second.color])
+            SetCard *first = (SetCard *)firstCard;
+            SetCard *second  = (SetCard *)secondCard;
+            if ([SetCard propMatch:self.symbol  second:first.symbol  third:second.symbol] &&
+                [SetCard propMatch:self.shading second:first.shading third:second.shading] &&
+                [SetCard propMatch:self.number  second:first.number  third:second.number] &&
+                [SetCard propMatch:self.color   second:first.color   third:second.color])
             {
                 score = 10;
             }

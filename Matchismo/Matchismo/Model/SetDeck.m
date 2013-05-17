@@ -7,18 +7,18 @@
 //
 
 #import "SetDeck.h"
-#import "Set.h"
+#import "SetCard.h"
 
 @implementation SetDeck
 - (id) init
 {
     self = [super init];
     if (self) {
-    for (NSString *symbol in [Set validSymbols]) {
-     for (NSString *number in [Set validNumbers]){
-      for (NSString *shading in [Set validShadings]) {
-       for (NSString *color in [Set validColors]){
-           Set *setcard = [[Set alloc] init];
+    for (NSString *symbol in [SetCard validSymbols]) {
+     for (NSString *number in [SetCard validNumbers]){
+      for (NSString *shading in [SetCard validShadings]) {
+       for (NSString *color in [SetCard validColors]){
+           SetCard *setcard = [[SetCard alloc] init];
            setcard.number = number;
            setcard.symbol = symbol;
            setcard.shading = shading;
