@@ -35,7 +35,6 @@
 
 
 - (void )setCardButtons:(NSArray *)cardButtons {
-    UIImage *cardBackImage = [UIImage imageNamed:@"bag.gif"];
     _cardButtons = cardButtons;
     
     for (UIButton *cardButton in cardButtons) {
