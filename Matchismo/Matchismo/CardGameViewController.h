@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Deck.h"
 
 @interface CardGameViewController : UIViewController
+
+@property (nonatomic) int noOfCardsToMatch;
+- (Deck *)CreateDeck;   //abstract
+- (void) updateButton: (UIButton *)Button forCard:(Card *)card;  //abstract
+
 @end

@@ -9,6 +9,7 @@
 #import "CardMatchingGame.h"
 @interface CardMatchingGame();
 @property (strong,nonatomic) NSMutableArray *cards;
+@property (nonatomic) int noOfCardsToMatch;
 @property (strong,nonatomic) NSString *lastResult;
 @property (nonatomic) int score;
 
@@ -22,7 +23,10 @@
     return _cards;
 }
 
-- (id)initWithCardCount:(NSUInteger)cardCount usingDeck: (Deck *)deck {
+- (id)initWithCardCount:(NSUInteger)cardCount
+              usingDeck: (Deck *)deck
+       noOfCardsToMatch: (int)noOfCardsToMatch
+{
     self = [super init];
     if (self) {
         for (int i=0;i<cardCount; i++) {
@@ -33,7 +37,7 @@
                 self.cards[i] = card;
             }
         }
-        self.noOfCardsToMatch = 2;
+        self.noOfCardsToMatch = noOfCardsToMatch;
     }
     return self;
 }

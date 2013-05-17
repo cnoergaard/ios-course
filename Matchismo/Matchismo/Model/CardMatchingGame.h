@@ -11,13 +11,12 @@
 
 @interface CardMatchingGame : NSObject
 
-- (id)initWithCardCount:(NSUInteger)cardCount usingDeck: (Deck *)deck;
+- (id)initWithCardCount:(NSUInteger)cardCount usingDeck: (Deck *)deck noOfCardsToMatch:(int) noOfCardsToMatch;
 - (void)flipCardAtIndex:(NSUInteger)index;
 - (Card *)cardAtIndex:(NSUInteger)index;
 
 @property (nonatomic,strong,readonly) NSString *lastResult;
 @property (nonatomic,readonly)int score;
-@property (nonatomic) int noOfCardsToMatch;
 
 @end
 

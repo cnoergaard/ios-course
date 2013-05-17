@@ -23,10 +23,10 @@
             </objects>
             <point key="canvasLocation" x="-922" y="301"/>
         </scene>
-        <!--Card Game View Controller - Matchismo-->
+        <!--Playing Card View Controller - Matchismo-->
         <scene sceneID="5">
             <objects>
-                <viewController id="2" customClass="CardGameViewController" sceneMemberID="viewController">
+                <viewController id="2" customClass="PlayingCardViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="20" width="320" height="411"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -325,10 +325,10 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="VCQ-36-GUh"/>
+                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="eD6-cg-I4b"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rXs-kn-otf">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="96a-fa-2fs">
                                 <rect key="frame" x="88" y="19" width="60" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -340,11 +340,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="84I-Jy-8G7"/>
+                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="jgd-dQ-Ir5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="45P-kA-2ct">
-                                <rect key="frame" x="156" y="20" width="60" height="39"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bc2-dG-Dhn">
+                                <rect key="frame" x="156" y="20" width="60" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button">
@@ -355,11 +355,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="ps9-yi-Js0"/>
+                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="MX8-9h-iOy"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="SyF-bZ-53X">
-                                <rect key="frame" x="224" y="20" width="60" height="39"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="P6m-rg-ewH">
+                                <rect key="frame" x="224" y="20" width="60" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button">
@@ -370,10 +370,10 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="m2U-Ad-Krr"/>
+                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="hII-Fb-fWW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sF8-5e-goJ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="h6Z-6L-FQ9">
                                 <rect key="frame" x="20" y="67" width="60" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -385,10 +385,10 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="uX6-xQ-hgn"/>
+                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="sBo-Hz-ZZq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hig-Zw-ysc">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8bw-Cs-Mf0">
                                 <rect key="frame" x="88" y="67" width="60" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -400,11 +400,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="yxU-Kt-116"/>
+                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="P3Q-hk-btA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JbS-mZ-NpG">
-                                <rect key="frame" x="156" y="68" width="60" height="39"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="R4t-K1-mVn">
+                                <rect key="frame" x="156" y="68" width="60" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button">
@@ -415,11 +415,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="9Qn-rC-JjX"/>
+                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="iP0-dC-Awy"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="NMG-y8-Tgp">
-                                <rect key="frame" x="224" y="68" width="60" height="39"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qJ8-dD-qCf">
+                                <rect key="frame" x="224" y="68" width="60" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button">
@@ -430,11 +430,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="Blh-3e-T14"/>
+                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="ePB-mf-iuk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fD3-Lo-bP2">
-                                <rect key="frame" x="20" y="115" width="60" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ySM-Vj-PBI">
+                                <rect key="frame" x="20" y="116" width="60" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button">
@@ -445,11 +445,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="57O-KN-dgy"/>
+                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="Y0c-Wi-afm"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Id6-ZI-pcd">
-                                <rect key="frame" x="88" y="115" width="60" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ip4-yb-Tqs">
+                                <rect key="frame" x="88" y="116" width="60" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button">
@@ -460,11 +460,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="gT3-df-fdP"/>
+                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="loV-XE-gzD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6Is-GJ-5OG">
-                                <rect key="frame" x="156" y="116" width="60" height="39"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="KOq-U3-8MN">
+                                <rect key="frame" x="156" y="117" width="60" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button">
@@ -475,11 +475,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="kNB-DK-ktw"/>
+                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="cZD-4g-QHN"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Wo3-Zg-z8F">
-                                <rect key="frame" x="224" y="116" width="60" height="39"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bmj-6X-gGK">
+                                <rect key="frame" x="224" y="117" width="60" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button">
@@ -490,11 +490,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="Vf3-SJ-dRJ"/>
+                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="Dvk-Bu-cB2"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DTX-Me-Hh5">
-                                <rect key="frame" x="20" y="163" width="60" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dRF-YB-cTX">
+                                <rect key="frame" x="20" y="164" width="60" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button">
@@ -505,11 +505,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="t1I-qd-rA8"/>
+                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="dJh-C7-cb6"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ang-73-fpg">
-                                <rect key="frame" x="88" y="163" width="60" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2gG-kw-jqz">
+                                <rect key="frame" x="88" y="164" width="60" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button">
@@ -520,11 +520,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="Skl-ab-q5x"/>
+                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="GJr-WI-bF6"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nei-46-mJw">
-                                <rect key="frame" x="156" y="164" width="60" height="39"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DEf-yq-JkY">
+                                <rect key="frame" x="156" y="165" width="60" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button">
@@ -535,11 +535,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="3gX-WR-wdP"/>
+                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="dW7-f1-301"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nt8-35-96o">
-                                <rect key="frame" x="224" y="164" width="60" height="39"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="htM-rB-VW8">
+                                <rect key="frame" x="224" y="165" width="60" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button">
@@ -550,11 +550,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="ils-c8-Tbw"/>
+                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="T9T-kE-gQ1"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Oik-zQ-fRe">
-                                <rect key="frame" x="20" y="211" width="60" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Lgp-vI-vBF">
+                                <rect key="frame" x="20" y="212" width="60" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button">
@@ -565,11 +565,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="VWE-ng-TWf"/>
+                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="F2c-uu-TEe"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zK8-BG-4k4">
-                                <rect key="frame" x="88" y="211" width="60" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eVc-Q8-6B1">
+                                <rect key="frame" x="88" y="212" width="60" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button">
@@ -580,11 +580,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="AqI-Vp-64Q"/>
+                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="lDl-c9-iTH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LC5-uR-Hc9">
-                                <rect key="frame" x="156" y="212" width="60" height="39"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Cgr-r1-msD">
+                                <rect key="frame" x="156" y="213" width="60" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button">
@@ -595,11 +595,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="fZC-Oo-XqN"/>
+                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="Gir-9N-Rdj"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JL4-dP-XEA">
-                                <rect key="frame" x="224" y="212" width="60" height="39"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qYG-Yb-wEv">
+                                <rect key="frame" x="224" y="213" width="60" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button">
@@ -610,11 +610,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="V6G-DW-Ifh"/>
+                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="4DQ-37-XYM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xJP-Fr-g2z">
-                                <rect key="frame" x="20" y="259" width="60" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lKE-tu-7iz">
+                                <rect key="frame" x="20" y="261" width="60" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button">
@@ -625,11 +625,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="S8S-EU-Mvj"/>
+                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="1oz-cb-fe0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DBJ-Lh-XKF">
-                                <rect key="frame" x="88" y="259" width="60" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="QjH-l0-KDH">
+                                <rect key="frame" x="88" y="261" width="60" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button">
@@ -640,11 +640,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="OFe-i3-3cX"/>
+                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="IXv-DK-5OI"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4kK-Eu-Bxw">
-                                <rect key="frame" x="156" y="260" width="60" height="39"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OZf-Ea-aai">
+                                <rect key="frame" x="156" y="262" width="60" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button">
@@ -655,11 +655,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="mO0-jW-cep"/>
+                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="pKi-us-MYK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MsM-CP-GUV">
-                                <rect key="frame" x="224" y="260" width="60" height="39"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="GgW-TP-Iep">
+                                <rect key="frame" x="224" y="262" width="60" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button">
@@ -670,7 +670,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="3gs-v1-Z3n"/>
+                                    <action selector="flipCard:" destination="A3G-3I-fio" eventType="touchUpInside" id="lQ0-kb-Mpx"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Flips: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hGR-RN-dZc">
@@ -706,7 +706,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="Deal:" destination="A3G-3I-fio" eventType="touchUpInside" id="Thk-yE-an9"/>
+                                    <action selector="Deal:" destination="A3G-3I-fio" eventType="touchUpInside" id="Bk9-Eg-w8E"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -714,37 +714,34 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Set" id="Lfi-wh-D6i"/>
                     <connections>
-                        <outlet property="flipsLabel" destination="hGR-RN-dZc" id="SDw-MY-9oy"/>
-                        <outlet property="lastResultLabel" destination="xVI-qu-LCd" id="YAU-o4-LDU"/>
-                        <outlet property="scoreLabel" destination="kks-WG-qUz" id="vc7-Ga-Bf1"/>
-                        <outletCollection property="cardButtons" destination="ECn-sO-0i8" id="P9g-rg-2oh"/>
-                        <outletCollection property="cardButtons" destination="rXs-kn-otf" id="hfQ-QD-sw9"/>
-                        <outletCollection property="cardButtons" destination="45P-kA-2ct" id="5O4-8g-lCb"/>
-                        <outletCollection property="cardButtons" destination="SyF-bZ-53X" id="OrX-Ju-3Cu"/>
-                        <outletCollection property="cardButtons" destination="ECn-sO-0i8" id="AcE-wZ-ACY"/>
-                        <outletCollection property="cardButtons" destination="rXs-kn-otf" id="PcL-Cl-jek"/>
-                        <outletCollection property="cardButtons" destination="45P-kA-2ct" id="tSf-UY-gyE"/>
-                        <outletCollection property="cardButtons" destination="SyF-bZ-53X" id="YZf-6a-Yjb"/>
-                        <outletCollection property="cardButtons" destination="sF8-5e-goJ" id="SwX-jq-20t"/>
-                        <outletCollection property="cardButtons" destination="hig-Zw-ysc" id="L6y-0J-gGN"/>
-                        <outletCollection property="cardButtons" destination="JbS-mZ-NpG" id="GpB-Af-Feg"/>
-                        <outletCollection property="cardButtons" destination="NMG-y8-Tgp" id="Dxo-QS-vtr"/>
-                        <outletCollection property="cardButtons" destination="fD3-Lo-bP2" id="lI9-bV-dhF"/>
-                        <outletCollection property="cardButtons" destination="Id6-ZI-pcd" id="J16-3j-iWw"/>
-                        <outletCollection property="cardButtons" destination="6Is-GJ-5OG" id="ir3-xz-fVl"/>
-                        <outletCollection property="cardButtons" destination="Wo3-Zg-z8F" id="NFT-q3-4Dr"/>
-                        <outletCollection property="cardButtons" destination="DTX-Me-Hh5" id="oqn-Ry-z8M"/>
-                        <outletCollection property="cardButtons" destination="Ang-73-fpg" id="lZw-3G-0Nc"/>
-                        <outletCollection property="cardButtons" destination="nei-46-mJw" id="vzP-Yv-L4E"/>
-                        <outletCollection property="cardButtons" destination="nt8-35-96o" id="xkn-rl-Uzh"/>
-                        <outletCollection property="cardButtons" destination="Oik-zQ-fRe" id="Ctk-fV-QAh"/>
-                        <outletCollection property="cardButtons" destination="zK8-BG-4k4" id="wCD-Iz-17e"/>
-                        <outletCollection property="cardButtons" destination="LC5-uR-Hc9" id="QkO-rL-hxa"/>
-                        <outletCollection property="cardButtons" destination="JL4-dP-XEA" id="QuP-JK-slr"/>
-                        <outletCollection property="cardButtons" destination="xJP-Fr-g2z" id="QE9-ol-b45"/>
-                        <outletCollection property="cardButtons" destination="DBJ-Lh-XKF" id="g5B-8d-ib0"/>
-                        <outletCollection property="cardButtons" destination="4kK-Eu-Bxw" id="Mkp-Nu-J9I"/>
-                        <outletCollection property="cardButtons" destination="MsM-CP-GUV" id="nyV-uJ-wFx"/>
+                        <outlet property="flipsLabel" destination="hGR-RN-dZc" id="aVx-GZ-2MI"/>
+                        <outlet property="lastResultLabel" destination="xVI-qu-LCd" id="QJV-Fl-Jrk"/>
+                        <outlet property="scoreLabel" destination="kks-WG-qUz" id="MND-eg-hFd"/>
+                        <outletCollection property="cardButtons" destination="ECn-sO-0i8" id="Lfo-dJ-3rC"/>
+                        <outletCollection property="cardButtons" destination="ECn-sO-0i8" id="IZF-T2-7Qd"/>
+                        <outletCollection property="cardButtons" destination="96a-fa-2fs" id="m33-ZV-Z6I"/>
+                        <outletCollection property="cardButtons" destination="bc2-dG-Dhn" id="rPc-tC-iNU"/>
+                        <outletCollection property="cardButtons" destination="P6m-rg-ewH" id="B64-wB-OON"/>
+                        <outletCollection property="cardButtons" destination="h6Z-6L-FQ9" id="znz-CF-QpW"/>
+                        <outletCollection property="cardButtons" destination="8bw-Cs-Mf0" id="4Gf-QD-Yq6"/>
+                        <outletCollection property="cardButtons" destination="R4t-K1-mVn" id="VXk-ug-tKM"/>
+                        <outletCollection property="cardButtons" destination="qJ8-dD-qCf" id="Ruc-ij-OK3"/>
+                        <outletCollection property="cardButtons" destination="ySM-Vj-PBI" id="FAP-vA-Ybi"/>
+                        <outletCollection property="cardButtons" destination="Ip4-yb-Tqs" id="9ch-2U-Ygn"/>
+                        <outletCollection property="cardButtons" destination="KOq-U3-8MN" id="SQx-cG-7V4"/>
+                        <outletCollection property="cardButtons" destination="bmj-6X-gGK" id="7WS-9i-zhH"/>
+                        <outletCollection property="cardButtons" destination="dRF-YB-cTX" id="Lr2-mW-95a"/>
+                        <outletCollection property="cardButtons" destination="2gG-kw-jqz" id="vwL-16-J1j"/>
+                        <outletCollection property="cardButtons" destination="DEf-yq-JkY" id="v2A-ZT-8TK"/>
+                        <outletCollection property="cardButtons" destination="htM-rB-VW8" id="FE5-FS-2g1"/>
+                        <outletCollection property="cardButtons" destination="Lgp-vI-vBF" id="CQN-e9-FWF"/>
+                        <outletCollection property="cardButtons" destination="eVc-Q8-6B1" id="Uj6-le-mrb"/>
+                        <outletCollection property="cardButtons" destination="Cgr-r1-msD" id="31S-Uz-hzR"/>
+                        <outletCollection property="cardButtons" destination="qYG-Yb-wEv" id="BLF-Tn-WHT"/>
+                        <outletCollection property="cardButtons" destination="lKE-tu-7iz" id="zbd-6m-jJ6"/>
+                        <outletCollection property="cardButtons" destination="QjH-l0-KDH" id="aoD-cq-z6U"/>
+                        <outletCollection property="cardButtons" destination="OZf-Ea-aai" id="fyk-ZU-6NJ"/>
+                        <outletCollection property="cardButtons" destination="GgW-TP-Iep" id="TLK-VD-PiG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZE-Ha-6jf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -757,6 +754,8 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CardGameViewController.h"/>
             <relationships>
                 <relationship kind="action" name="Deal:"/>
+                <relationship kind="action" name="GameModeChanged:" candidateClass="UISegmentedControl"/>
+                <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="gameModeButton" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="lastResultLabel" candidateClass="UILabel"/>
@@ -764,17 +763,11 @@
                 <relationship kind="outletCollection" name="cardButtons" candidateClass="UIButton"/>
             </relationships>
         </class>
-        <class className="SetGameViewController" superclassName="UIViewController">
+        <class className="PlayingCardViewController" superclassName="CardGameViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlayingCardViewController.h"/>
+        </class>
+        <class className="SetGameViewController" superclassName="CardGameViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SetGameViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="Deal:"/>
-                <relationship kind="action" name="GameModeChanged:" candidateClass="UISegmentedControl"/>
-                <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lastResultLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
-                <relationship kind="outletCollection" name="cardButtons" candidateClass="UIButton"/>
-            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

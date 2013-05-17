@@ -1,14 +1,14 @@
 //
-//  SetGameViewController.h
+//  PlayingCardViewController.h
 //  Matchismo
 //
-//  Created by Claus Noergaard on 5/14/13.
+//  Created by cn on 17/05/13.
 //  Copyright (c) 2013 cn. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "CardGameViewController.h"
 
-@interface SetGameViewController : CardGameViewController
+@interface PlayingCardViewController : CardGameViewController
 
 @end
