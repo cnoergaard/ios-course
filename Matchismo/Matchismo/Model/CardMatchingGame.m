@@ -85,6 +85,7 @@
        }
        self.score -= FLIP_COST;
        card.faceUp = !card.isFaceUp;
+        NSMutableAttributedString
    }
 }
 
