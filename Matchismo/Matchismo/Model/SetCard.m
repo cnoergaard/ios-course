@@ -78,7 +78,7 @@
 
 - (NSString *) contents
 {
-    return [NSString stringWithFormat:@"%@-%lu-%@-%@",self.symbol,(unsigned long)self.number,self.color,self.shading];
+    return [NSString stringWithFormat:@"%@-%@-%@-%@",self.symbol,self.number,self.color,self.shading];
 }
 
 /*- (BOOL)selMatch:(SEL)sel first:(Set*)first second:(Set*) second {

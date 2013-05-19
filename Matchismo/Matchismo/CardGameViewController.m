@@ -18,29 +18,30 @@
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastResultLabel;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *gameModeButton;
 @end
 
 @implementation CardGameViewController
 
 
 - (CardMatchingGame*)game {
-    if (!_game) _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
-                                                          usingDeck:[self CreateDeck]
-                                                   noOfCardsToMatch:self.noOfCardsToMatch];
-
+    if (!_game) _game = [[CardMatchingGame alloc]
+                         initWithCardCount:self.cardButtons.count
+                         usingDeck:[self CreateDeck]
+                         noOfCardsToMatch:self.noOfCardsToMatch
+                         flipCost:1
+                         matchBonus:4
+                         misMatchPenalty:2];
     return _game;
 }
 
 - (Deck *)CreateDeck
-{
-    return nil;
-}
+{ return nil; }
 
 - (void) updateButton: (UIButton *)Button forCard:(Card *)card
-{
-    
-}
+{}
+
+- (NSAttributedString* ) cardAttrString:(Card *)card
+{ return nil;}
 
 - (void )setCardButtons:(NSArray *)cardButtons {
     _cardButtons = cardButtons;
@@ -59,7 +60,6 @@
     }
     [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
     [self updateUI];
-    [self.gameModeButton setEnabled:NO];
 }
 
 - (IBAction)Deal:(id)sender {
@@ -70,7 +70,6 @@
     self.game = nil;
     self.flipCount = 0;
     [self updateUI];
-    [self.gameModeButton setEnabled:YES ];
 }
 
 - (void) updateUI {
@@ -78,8 +77,47 @@
         Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
         [self updateButton:cardButton forCard:card];
     }
-    self.lastResultLabel.text = self.game.lastResult;
+    self.lastResultLabel.attributedText = [self getResult:self.game.lastResult];
     self.scoreLabel.text = [NSString stringWithFormat:@"Score :%d", self.game.score];
+}
+
+- (NSAttributedString *) getResult:(GameResult *)result {
+    NSMutableAttributedString *attres;
+    attres = [[NSMutableAttributedString alloc] initWithAttributedString:[self cardAttrString:result.cardPlayed]];
+    if (result.type == kFlip)
+        [attres appendAttributedString:
+          [[NSAttributedString alloc] initWithString:@" flipped"]];
+    else if (result.type == kFlipUp)
+        [attres appendAttributedString:
+         [[NSAttributedString alloc] initWithString:@" turned up"]];
+    else
+    {
+        NSMutableAttributedString *others = [[NSMutableAttributedString alloc] init];
+        for (Card *othercard in result.otherCards)
+        {
+          [others appendAttributedString:[self cardAttrString:othercard]];
+           if (othercard!=result.otherCards.lastObject)
+               [others appendAttributedString: [[NSAttributedString alloc] initWithString:@" & "]];
+        }
+       if (result.type == kMatch)
+       {
+           [attres appendAttributedString:
+             [[NSAttributedString alloc] initWithString:@" matched with "]];
+           [attres appendAttributedString:others];
+           [attres appendAttributedString:
+            [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" for %d points", result.score]]];
+       }
+       else if (result.type == kMisMatch)
+       {
+        [attres appendAttributedString:
+         [[NSAttributedString alloc] initWithString:@" does not match with "]];
+        [attres appendAttributedString:others];
+        [attres appendAttributedString:
+         [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@". %d points penalty", -result.score]]];
+       }
+       else attres = nil;
+    }
+   return attres;
 }
 
 @end

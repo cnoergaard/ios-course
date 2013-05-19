@@ -10,9 +10,11 @@
 @interface CardMatchingGame();
 @property (strong,nonatomic) NSMutableArray *cards;
 @property (nonatomic) int noOfCardsToMatch;
-@property (strong,nonatomic) NSString *lastResult;
-@property (nonatomic) int score;
-
+@property (strong,nonatomic) GameResult *lastResult;
+@property (nonatomic) NSUInteger score;
+@property (nonatomic) NSUInteger flipCost;
+@property (nonatomic) NSUInteger matchBonus;
+@property (nonatomic) NSUInteger misMatchPenalty;
 @end
 
 
@@ -23,9 +25,19 @@
     return _cards;
 }
 
+- (GameResult *)lastResult {
+    if (!_lastResult) _lastResult = [[GameResult alloc] init];
+    return _lastResult;
+}
+
+
 - (id)initWithCardCount:(NSUInteger)cardCount
               usingDeck: (Deck *)deck
-       noOfCardsToMatch: (int)noOfCardsToMatch
+       noOfCardsToMatch: (NSUInteger)noOfCardsToMatch
+               flipCost:(NSUInteger) flipCost
+             matchBonus:(NSUInteger) matchBonus
+        misMatchPenalty:(NSUInteger) misMatchPenalty;
+
 {
     self = [super init];
     if (self) {
@@ -38,6 +50,9 @@
             }
         }
         self.noOfCardsToMatch = noOfCardsToMatch;
+        self.flipCost = flipCost;
+        self.matchBonus = matchBonus;
+        self.misMatchPenalty = misMatchPenalty;
     }
     return self;
 }
@@ -46,13 +61,12 @@
     return (index < self.cards.count) ? self.cards[index]:nil;
 }
 
-#define FLIP_COST 1
-#define MATCH_BONUS 4
-#define MISMATCH_PENALTY 2
-
 - (void)flipCardAtIndex:(NSUInteger)index {
     NSMutableArray *selectedCards;
     Card *card = [self cardAtIndex:index];
+    self.lastResult.cardPlayed = card;
+    self.lastResult.score = 0;
+    self.lastResult.otherCards = nil;
     if (!card.isUnplayable) {
         if (!card.isFaceUp) {
           selectedCards = [[NSMutableArray alloc] init];
@@ -62,32 +76,29 @@
           }}
                
           if ([selectedCards count]==self.noOfCardsToMatch-1) {
-          int matchScore = [card match:selectedCards];
+                  self.lastResult.otherCards = selectedCards;
+                  int matchScore = [card match:selectedCards];
                   if (matchScore) {
                       for (Card *otherCard in selectedCards) {
                         otherCard.unplayable = YES;
                       }
                       card.unplayable = YES;
-                      self.score += matchScore * MATCH_BONUS;
-                      self.lastResult = [NSString stringWithFormat:@"Matched %@ & %@ for %d points",
-                                            card.contents,
-                                            [selectedCards componentsJoinedByString:@","],
-                                             matchScore * MATCH_BONUS];
+                      self.lastResult.score = matchScore * self.matchBonus;
+                      self.lastResult.type = kMatch;
                   } else {
                       for (Card *otherCard in selectedCards) {
                         otherCard.faceUp = NO;
                       }
-                      self.score -= MISMATCH_PENALTY;
-                      self.lastResult = [NSString stringWithFormat:@"%@ and %@ does not match. %d points penalty",card.contents,[selectedCards componentsJoinedByString:@","], MISMATCH_PENALTY];
-
+                      self.lastResult.score = -self.misMatchPenalty;
+                      self.lastResult.type = kMisMatch;
                   }
               } else {
-              self.lastResult = [NSString stringWithFormat:@"%@ flipped", card.contents];
+                  self.lastResult.type = kFlip;
            }
        } else {
-          self.lastResult = [NSString stringWithFormat:@"%@ turned up", card.contents];
+          self.lastResult.type = kFlipUp;
        }
-       self.score -= FLIP_COST;
+       self.score += self.lastResult.score - self.flipCost;
        card.faceUp = !card.isFaceUp;
    }
 }

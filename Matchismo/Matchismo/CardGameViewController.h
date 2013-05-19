@@ -14,5 +14,7 @@
 @property (nonatomic) int noOfCardsToMatch;
 - (Deck *)CreateDeck;   //abstract
 - (void) updateButton: (UIButton *)Button forCard:(Card *)card;  //abstract
+- (NSAttributedString* ) cardAttrString:(Card *)card;  //abstract
+
 
 @end

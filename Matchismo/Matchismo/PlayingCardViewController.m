@@ -34,4 +34,10 @@
     cardButton.enabled = !card.isUnplayable;
     cardButton.alpha = card.isUnplayable? 0.3 : 1.0;
 }
+
+- (NSAttributedString* ) cardAttrString:(Card *)card {
+    if (card==nil)
+        return nil;
+    return [[NSAttributedString alloc] initWithString:card.contents];
+}
 @end
