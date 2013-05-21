@@ -21,6 +21,7 @@
 - (void)flipCardAtIndex:(NSUInteger)index;
 - (Card *)cardAtIndex:(NSUInteger)index;
 
+@property (nonatomic,readonly) NSUInteger numberOfCardsInGame;
 @property (nonatomic,strong,readonly) GameResult *lastResult;
 @property (nonatomic,readonly) NSUInteger score;
 

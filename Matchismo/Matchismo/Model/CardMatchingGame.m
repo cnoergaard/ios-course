@@ -12,6 +12,7 @@
 @property (nonatomic) int noOfCardsToMatch;
 @property (strong,nonatomic) GameResult *lastResult;
 @property (nonatomic) NSUInteger score;
+@property (nonatomic) NSUInteger numberOfCardsInGame;
 @property (nonatomic) NSUInteger flipCost;
 @property (nonatomic) NSUInteger matchBonus;
 @property (nonatomic) NSUInteger misMatchPenalty;
@@ -50,6 +51,7 @@
             }
         }
         self.noOfCardsToMatch = noOfCardsToMatch;
+        self.numberOfCardsInGame = cardCount;
         self.flipCost = flipCost;
         self.matchBonus = matchBonus;
         self.misMatchPenalty = misMatchPenalty;

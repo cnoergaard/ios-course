@@ -13,7 +13,7 @@
 
 @property (nonatomic) int noOfCardsToMatch;
 - (Deck *)CreateDeck;   //abstract
-- (void) updateButton: (UIButton *)Button forCard:(Card *)card;  //abstract
+- (void) updateCell: (UICollectionViewCell *)cell forCard:(Card *)card; //abstract
 - (NSAttributedString* ) cardAttrString:(Card *)card;  //abstract
 
 

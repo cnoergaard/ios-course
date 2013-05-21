@@ -10,10 +10,10 @@
 #import "Deck.h"
 #import "CardMatchingGame.h"
 
-@interface CardGameViewController ()
+@interface CardGameViewController () <UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (nonatomic) int flipCount;
+@property (weak, nonatomic) IBOutlet UICollectionView *cardCollectionView;
 
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
@@ -25,7 +25,7 @@
 
 - (CardMatchingGame*)game {
     if (!_game) _game = [[CardMatchingGame alloc]
-                         initWithCardCount:self.cardButtons.count
+                         initWithCardCount:20
                          usingDeck:[self CreateDeck]
                          noOfCardsToMatch:self.noOfCardsToMatch
                          flipCost:1
@@ -34,19 +34,26 @@
     return _game;
 }
 
-- (Deck *)CreateDeck
-{ return nil; }
+- (Deck *)CreateDeck{ return nil; } //abstract
+- (void) updateCell: (UICollectionViewCell *)cell forCard:(Card *)card {} //abstract
+- (NSAttributedString* ) cardAttrString:(Card *)card { return nil;} //abstract
 
-- (void) updateButton: (UIButton *)Button forCard:(Card *)card
-{}
-
-- (NSAttributedString* ) cardAttrString:(Card *)card
-{ return nil;}
-
-- (void )setCardButtons:(NSArray *)cardButtons {
-    _cardButtons = cardButtons;
-    [self updateUI];
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
 }
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.game.numberOfCardsInGame;
+}
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlayingCard" forIndexPath:indexPath];
+    Card *card = [self.game cardAtIndex:indexPath.item];
+    [self updateCell:cell forCard:card];
+    return cell;
+}
+
 
 - (void) setFlipCount:(int)flipCount
 {
@@ -54,12 +61,16 @@
     self.flipsLabel.text = [NSString stringWithFormat:@"Flips :%d", self.flipCount];
 }
 
-- (IBAction)flipCard:(UIButton *)sender {
-    if (!sender.selected) {
-         self.flipCount++;
+
+- (IBAction)flipCard:(UITapGestureRecognizer *) gesture {
+    CGPoint tapPoint = [gesture locationInView:self.cardCollectionView];
+    NSIndexPath *index = [self.cardCollectionView indexPathForItemAtPoint:tapPoint];
+    if (index)
+    {
+        [self.game flipCardAtIndex:index.item];
+        self.flipCount++;
+        [self updateUI];
     }
-    [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
-    [self updateUI];
 }
 
 - (IBAction)Deal:(id)sender {
@@ -73,9 +84,11 @@
 }
 
 - (void) updateUI {
-    for (UIButton *cardButton in self.cardButtons) {
-        Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
-        [self updateButton:cardButton forCard:card];
+
+    for (UICollectionViewCell *cell in [self.cardCollectionView visibleCells]) {
+        NSIndexPath *path = [self.cardCollectionView indexPathForCell:cell];
+        Card *card =  [self.game cardAtIndex:path.item];
+        [self updateCell:cell forCard:card];
     }
     self.lastResultLabel.attributedText = [self getResult:self.game.lastResult];
     self.scoreLabel.text = [NSString stringWithFormat:@"Score :%d", self.game.score];

@@ -8,6 +8,8 @@
 
 #import "PlayingCardViewController.h"
 #import "PlayingCardDeck.h"
+#import "PlayingCard.h"
+#import "PlayingCardCollectionViewCell.h"
 
 @interface PlayingCardViewController ()
 
@@ -24,16 +26,21 @@
     return [[PlayingCardDeck alloc] init];
 }
 
-- (void) updateButton: (UIButton *)cardButton forCard:(Card *)card {   
-    [cardButton setTitle:card.contents forState:UIControlStateSelected];
-    [cardButton setTitle:card.contents forState:UIControlStateSelected|UIControlStateDisabled];
-    cardButton.imageEdgeInsets = UIEdgeInsetsMake(5,5,5,5);
-   [cardButton setImage:(card.isFaceUp?nil:[UIImage imageNamed:@"bag.gif"]) forState:UIControlStateNormal];
+- (void) updateCell: (UICollectionViewCell *)cell forCard:(Card *)card
+{
+    if ([cell isKindOfClass:[PlayingCardCollectionViewCell class]] &&
+        [card isKindOfClass:[PlayingCard class]])
+    {
+        PlayingCard *playingcard = (PlayingCard *)card;
+        PlayingCardView *playingCardView = ((PlayingCardCollectionViewCell *)cell).playingCardView;
         
-    cardButton.selected = card.isFaceUp;
-    cardButton.enabled = !card.isUnplayable;
-    cardButton.alpha = card.isUnplayable? 0.3 : 1.0;
+        playingCardView.suit = playingcard.suit;
+        playingCardView.rank = playingcard.rank;
+        playingCardView.faceUp = playingcard.isFaceUp;
+        playingCardView.alpha = playingcard.isUnplayable?0.3:1.0;
+    }
 }
+ 
 
 - (NSAttributedString* ) cardAttrString:(Card *)card {
     if (card==nil)
