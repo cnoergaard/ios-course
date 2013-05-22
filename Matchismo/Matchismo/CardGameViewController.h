@@ -12,6 +12,7 @@
 @interface CardGameViewController : UIViewController
 
 @property (nonatomic) int noOfCardsToMatch;
+@property (nonatomic,readonly) NSString *reuseId;
 - (Deck *)CreateDeck;   //abstract
 - (void) updateCell: (UICollectionViewCell *)cell forCard:(Card *)card; //abstract
 - (NSAttributedString* ) cardAttrString:(Card *)card;  //abstract

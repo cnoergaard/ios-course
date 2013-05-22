@@ -10,6 +10,7 @@
 #import "SetDeck.h"
 #import "SetCard.h"
 #import "CardMatchingGame.h"
+#import "SetCardCollectionViewCell.h"
 
 @interface SetGameViewController ()
 @end
@@ -25,6 +26,7 @@
     self.noOfCardsToMatch = 3;
 }
 
+- (NSString *)reuseId { return @"SetCard"; } 
 
 #define COLORS @{@"red":[UIColor redColor],@"green":[UIColor greenColor],@"blue":[UIColor blueColor]}
 #define SHADINGS @{@"striped":@"0.4",@"solid":@"1.0",@"open":@"0.0"}
@@ -49,14 +51,19 @@
         return nil;
 }
 
-- (void) updateButton: (UIButton *)cardButton forCard:(Card *)card
+- (void) updateCell: (UICollectionViewCell *)cell forCard:(Card *)card
 {
-    [cardButton setAttributedTitle:[self cardAttrString:card] forState:UIControlStateNormal];
-    cardButton.selected = card.isFaceUp;
-    cardButton.backgroundColor = card.isFaceUp?[UIColor grayColor]:[UIColor clearColor];
-    
-    cardButton.enabled = !card.isUnplayable;
-    cardButton.alpha = card.isUnplayable? 0.0 : 1.0;
+    if ([cell isKindOfClass:[SetCardCollectionViewCell class]] &&
+        [card isKindOfClass:[SetCard class]])
+    {
+        UIButton *but = ((SetCardCollectionViewCell *)cell).button;
+        [but setAttributedTitle:[self cardAttrString:card] forState:UIControlStateNormal];
+        but.selected = card.isFaceUp;
+        but.backgroundColor = card.isFaceUp?[UIColor grayColor]:[UIColor clearColor];
+        
+        but.enabled = !card.isUnplayable;
+        but.alpha = card.isUnplayable? 0.0 : 1.0;
+    }
 }
 
 @end

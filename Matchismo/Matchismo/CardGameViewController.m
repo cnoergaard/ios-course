@@ -37,6 +37,7 @@
 - (Deck *)CreateDeck{ return nil; } //abstract
 - (void) updateCell: (UICollectionViewCell *)cell forCard:(Card *)card {} //abstract
 - (NSAttributedString* ) cardAttrString:(Card *)card { return nil;} //abstract
+- (NSString *)reuseId { return nil; } //abstract
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -48,7 +49,7 @@
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlayingCard" forIndexPath:indexPath];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.reuseId forIndexPath:indexPath];
     Card *card = [self.game cardAtIndex:indexPath.item];
     [self updateCell:cell forCard:card];
     return cell;

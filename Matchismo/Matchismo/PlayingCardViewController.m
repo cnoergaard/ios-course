@@ -26,6 +26,8 @@
     return [[PlayingCardDeck alloc] init];
 }
 
+- (NSString *)reuseId { return @"PlayingCard"; } 
+
 - (void) updateCell: (UICollectionViewCell *)cell forCard:(Card *)card
 {
     if ([cell isKindOfClass:[PlayingCardCollectionViewCell class]] &&
