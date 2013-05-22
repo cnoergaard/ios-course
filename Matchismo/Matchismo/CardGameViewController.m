@@ -18,6 +18,7 @@
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastResultLabel;
+@property (weak, nonatomic) IBOutlet UIButton *moreButton;
 @end
 
 @implementation CardGameViewController
@@ -45,6 +46,8 @@
 {
     return 1;
 }
+- (BOOL) doRemoveMatches { return NO; }
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return self.game.numberOfCardsInGame;
@@ -71,19 +74,49 @@
     if (index)
     {
         [self.game flipCardAtIndex:index.item];
+        if (self.game.lastResult.type==kMatch && self.doRemoveMatches)
+        {
+            NSMutableArray *matches = [[NSMutableArray alloc] init];
+            for (NSUInteger inx=self.game.numberOfCardsInGame-1; ;inx--)
+            {
+                Card *card = [self.game cardAtIndex:inx];
+                if (card.isUnplayable)
+                {
+                    [matches addObject:[NSIndexPath indexPathForRow:inx inSection:0]];
+                    [self.game removeCardAtIndex:inx];
+                }
+                if (inx==0) break;
+            }
+            [self.cardCollectionView deleteItemsAtIndexPaths:matches];
+        }
         self.flipCount++;
         [self updateUI:index.item];
     }
 }
 
 - (IBAction)Deal:(id)sender {
-   [self Restart];
-}
-
-- (void)Restart {
     self.game = nil;
     self.flipCount = 0;
-    [self updateUI:-1];
+    [self.cardCollectionView reloadData];
+    self.moreButton.enabled = YES;
+}
+
+- (IBAction)dealMoreCards:(id)sender
+{
+    for (NSUInteger i=0; i<3; i++)
+    {
+      NSUInteger inx = [self.game drawCard];
+      if (inx==NSUIntegerMax)
+      {
+          self.moreButton.enabled = NO;
+      }
+      else
+      {
+         NSIndexPath *path = [NSIndexPath indexPathForRow:inx inSection:0];
+        [self.cardCollectionView insertItemsAtIndexPaths:@[path]];
+        [self.cardCollectionView scrollToItemAtIndexPath:path atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
+      }
+   }
 }
 
 - (void) updateUI:(NSUInteger)animateIndex

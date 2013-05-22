@@ -28,7 +28,9 @@
 
 - (NSString *)reuseId { return @"SetCard"; }
 
-- (int )initialNoOfCards { return 15; }
+- (int )initialNoOfCards { return 12; }
+
+- (BOOL) doRemoveMatches { return YES; }
 
 
 #define COLORS @{@"red":[UIColor redColor],@"green":[UIColor greenColor],@"blue":[UIColor blueColor]}

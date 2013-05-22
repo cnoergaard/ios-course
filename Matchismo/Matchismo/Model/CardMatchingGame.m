@@ -62,18 +62,15 @@
     return self;
 }
 
-- (BOOL)drawMoreCards:(NSUInteger)moreCards
+- (NSUInteger)drawCard
 {
-    for (int i=0; i<moreCards; i++)
-    {
        Card *card = [self.deck drawRandomCard];
         if (card)
         {
             [self.cards addObject:card];
+            return self.cards.count -1;
         }
-        else return NO;
-    }
-    return YES;
+        else return NSUIntegerMax;
 }
 
 - (void)removeCardAtIndex:(NSUInteger)index

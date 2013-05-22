@@ -33,19 +33,6 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Matchismo/CardGameViewController.m"
-         timestampString = "390927016.84271"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "95"
-         endingLineNumber = "95"
-         landmarkName = "-updateUI:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "Matchismo/PlayingCardViewController.h"
          timestampString = "390757528.171109"
          startingColumnNumber = "9223372036854775807"
@@ -60,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Matchismo/CardGameViewController.m"
-         timestampString = "390859377.98048"
+         timestampString = "390948783.663387"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "23"
-         endingLineNumber = "23"
+         startingLineNumber = "24"
+         endingLineNumber = "24"
          landmarkName = "@implementation CardGameViewController"
          landmarkType = "3">
       </FileBreakpoint>

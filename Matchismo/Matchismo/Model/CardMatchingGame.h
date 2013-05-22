@@ -20,7 +20,7 @@
         misMatchPenalty:(NSUInteger) misMatchPenalty;
 - (void)flipCardAtIndex:(NSUInteger)index;
 - (Card *)cardAtIndex:(NSUInteger)index;
-- (BOOL )drawMoreCards:(NSUInteger)moreCards;
+- (NSUInteger)drawCard;
 - (void )removeCardAtIndex:(NSUInteger)index;
 
 @property (nonatomic,readonly) NSUInteger numberOfCardsInGame;
