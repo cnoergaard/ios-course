@@ -26,7 +26,10 @@
     self.noOfCardsToMatch = 3;
 }
 
-- (NSString *)reuseId { return @"SetCard"; } 
+- (NSString *)reuseId { return @"SetCard"; }
+
+- (int )initialNoOfCards { return 15; }
+
 
 #define COLORS @{@"red":[UIColor redColor],@"green":[UIColor greenColor],@"blue":[UIColor blueColor]}
 #define SHADINGS @{@"striped":@"0.4",@"solid":@"1.0",@"open":@"0.0"}
@@ -51,18 +54,19 @@
         return nil;
 }
 
-- (void) updateCell: (UICollectionViewCell *)cell forCard:(Card *)card
+- (void) updateCell: (UICollectionViewCell *)cell
+            forCard:(Card *)card
+            animate:(BOOL)isAnimated
 {
     if ([cell isKindOfClass:[SetCardCollectionViewCell class]] &&
         [card isKindOfClass:[SetCard class]])
     {
-        UIButton *but = ((SetCardCollectionViewCell *)cell).button;
-        [but setAttributedTitle:[self cardAttrString:card] forState:UIControlStateNormal];
-        but.selected = card.isFaceUp;
-        but.backgroundColor = card.isFaceUp?[UIColor grayColor]:[UIColor clearColor];
+        UILabel *lab = ((SetCardCollectionViewCell *)cell).label;
+        lab.attributedText = [self cardAttrString:card];
+        lab.backgroundColor = card.isFaceUp?[UIColor grayColor]:[UIColor clearColor];
         
-        but.enabled = !card.isUnplayable;
-        but.alpha = card.isUnplayable? 0.0 : 1.0;
+        lab.enabled = !card.isUnplayable;
+        lab.alpha = card.isUnplayable? 0.0 : 1.0;
     }
 }
 

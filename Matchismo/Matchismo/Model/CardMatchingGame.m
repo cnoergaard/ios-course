@@ -9,10 +9,10 @@
 #import "CardMatchingGame.h"
 @interface CardMatchingGame();
 @property (strong,nonatomic) NSMutableArray *cards;
+@property (strong,nonatomic) Deck *deck;
 @property (nonatomic) int noOfCardsToMatch;
 @property (strong,nonatomic) GameResult *lastResult;
 @property (nonatomic) NSUInteger score;
-@property (nonatomic) NSUInteger numberOfCardsInGame;
 @property (nonatomic) NSUInteger flipCost;
 @property (nonatomic) NSUInteger matchBonus;
 @property (nonatomic) NSUInteger misMatchPenalty;
@@ -31,6 +31,9 @@
     return _lastResult;
 }
 
+- (NSUInteger)numberOfCardsInGame {
+    return self.cards.count;
+}
 
 - (id)initWithCardCount:(NSUInteger)cardCount
               usingDeck: (Deck *)deck
@@ -47,16 +50,35 @@
             if (!card) {
                 self = nil;
             } else {
-                self.cards[i] = card;
+                [self.cards addObject:card];
             }
         }
         self.noOfCardsToMatch = noOfCardsToMatch;
-        self.numberOfCardsInGame = cardCount;
         self.flipCost = flipCost;
         self.matchBonus = matchBonus;
         self.misMatchPenalty = misMatchPenalty;
+        self.deck = deck;
     }
     return self;
+}
+
+- (BOOL)drawMoreCards:(NSUInteger)moreCards
+{
+    for (int i=0; i<moreCards; i++)
+    {
+       Card *card = [self.deck drawRandomCard];
+        if (card)
+        {
+            [self.cards addObject:card];
+        }
+        else return NO;
+    }
+    return YES;
+}
+
+- (void)removeCardAtIndex:(NSUInteger)index
+{
+    [self.cards removeObjectAtIndex:index];
 }
 
 - (Card *)cardAtIndex:(NSUInteger)index {

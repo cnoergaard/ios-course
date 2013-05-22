@@ -25,7 +25,7 @@
 
 - (CardMatchingGame*)game {
     if (!_game) _game = [[CardMatchingGame alloc]
-                         initWithCardCount:20
+                         initWithCardCount:self.initialNoOfCards
                          usingDeck:[self CreateDeck]
                          noOfCardsToMatch:self.noOfCardsToMatch
                          flipCost:1
@@ -35,7 +35,9 @@
 }
 
 - (Deck *)CreateDeck{ return nil; } //abstract
-- (void) updateCell: (UICollectionViewCell *)cell forCard:(Card *)card {} //abstract
+- (void) updateCell: (UICollectionViewCell *)cell
+            forCard:(Card *)card
+            animate:(BOOL)isAnimated {} //abstract
 - (NSAttributedString* ) cardAttrString:(Card *)card { return nil;} //abstract
 - (NSString *)reuseId { return nil; } //abstract
 
@@ -51,7 +53,7 @@
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.reuseId forIndexPath:indexPath];
     Card *card = [self.game cardAtIndex:indexPath.item];
-    [self updateCell:cell forCard:card];
+    [self updateCell:cell forCard:card animate:NO];
     return cell;
 }
 
@@ -70,7 +72,7 @@
     {
         [self.game flipCardAtIndex:index.item];
         self.flipCount++;
-        [self updateUI];
+        [self updateUI:index.item];
     }
 }
 
@@ -81,15 +83,15 @@
 - (void)Restart {
     self.game = nil;
     self.flipCount = 0;
-    [self updateUI];
+    [self updateUI:-1];
 }
 
-- (void) updateUI {
-
+- (void) updateUI:(NSUInteger)animateIndex
+{
     for (UICollectionViewCell *cell in [self.cardCollectionView visibleCells]) {
         NSIndexPath *path = [self.cardCollectionView indexPathForCell:cell];
         Card *card =  [self.game cardAtIndex:path.item];
-        [self updateCell:cell forCard:card];
+        [self updateCell:cell forCard:card animate:(path.item==animateIndex)];
     }
     self.lastResultLabel.attributedText = [self getResult:self.game.lastResult];
     self.scoreLabel.text = [NSString stringWithFormat:@"Score :%d", self.game.score];

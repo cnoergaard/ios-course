@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="aAc-AN-Zxf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="aAc-AN-Zxf">
     <dependencies>
         <development version="4600" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
@@ -32,20 +32,17 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="411"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Flips: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IkV-um-mzo">
-                                <rect key="frame" x="42" y="366" width="120" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Flips: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IkV-um-mzo">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Score:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zHg-py-qu7">
-                                <rect key="frame" x="192" y="366" width="86" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Score:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHg-py-qu7">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WfJ-As-YEU">
-                                <rect key="frame" x="135" y="355" width="49" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="820" verticalCompressionResistancePriority="837" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WfJ-As-YEU">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Deal">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -58,9 +55,7 @@
                                     <action selector="Deal:" destination="2" eventType="touchUpInside" id="bHW-0t-GOs"/>
                                 </connections>
                             </button>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="aco-Zk-76A">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="347"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="227" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aco-Zk-76A">
                                 <color key="backgroundColor" red="0.22526083359999999" green="1" blue="0.18223391410000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="6" minimumInteritemSpacing="6" id="fPa-ot-9ip">
@@ -77,14 +72,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="75" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view opaque="NO" contentMode="scaleToFill" id="bGl-n3-Vrm" customClass="PlayingCardView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="75" height="100"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGl-n3-Vrm" customClass="PlayingCardView">
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="bGl-n3-Vrm" firstAttribute="leading" secondItem="tiP-ee-LPL" secondAttribute="leading" type="default" id="38W-ar-x3w"/>
+                                            <constraint firstItem="bGl-n3-Vrm" firstAttribute="top" secondItem="tiP-ee-LPL" secondAttribute="top" type="default" id="hR7-0u-q5N"/>
+                                            <constraint firstItem="bGl-n3-Vrm" firstAttribute="trailing" secondItem="tiP-ee-LPL" secondAttribute="trailing" type="default" id="ne4-ZG-SB7"/>
+                                            <constraint firstItem="bGl-n3-Vrm" firstAttribute="bottom" secondItem="tiP-ee-LPL" secondAttribute="bottom" type="default" id="tFb-F3-Sv0"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="playingCardView" destination="bGl-n3-Vrm" id="nuz-9p-eP9"/>
                                         </connections>
@@ -98,6 +97,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="WfJ-As-YEU" firstAttribute="baseline" secondItem="IkV-um-mzo" secondAttribute="baseline" type="default" id="DoS-uX-fqj"/>
+                            <constraint firstItem="aco-Zk-76A" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="NRo-yy-e0H"/>
+                            <constraint firstItem="WfJ-As-YEU" firstAttribute="top" secondItem="aco-Zk-76A" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Rb0-Ro-65I"/>
+                            <constraint firstItem="zHg-py-qu7" firstAttribute="centerY" secondItem="WfJ-As-YEU" secondAttribute="centerY" type="default" id="mIs-X3-MBS"/>
+                            <constraint firstItem="WfJ-As-YEU" firstAttribute="centerX" secondItem="aco-Zk-76A" secondAttribute="centerX" type="default" id="qWI-Rl-rqb"/>
+                            <constraint firstItem="IkV-um-mzo" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="qv7-u8-pmL"/>
+                            <constraint firstAttribute="bottom" secondItem="WfJ-As-YEU" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="sz5-vb-l16"/>
+                            <constraint firstAttribute="trailing" secondItem="zHg-py-qu7" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="tX1-7Y-EPx"/>
+                            <constraint firstItem="aco-Zk-76A" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="vLw-OV-Amu"/>
+                            <constraint firstItem="aco-Zk-76A" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="yAW-nT-HEd"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Matchismo" image="spade_30x30.png" id="mhs-FK-1dA"/>
                     <connections>
@@ -123,26 +134,20 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="411"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Flips: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hGR-RN-dZc">
-                                <rect key="frame" x="20" y="358" width="120" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Score:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kks-WG-qUz">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Score:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kks-WG-qUz">
-                                <rect key="frame" x="199" y="358" width="85" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Result:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xVI-qu-LCd">
-                                <rect key="frame" x="20" y="318" width="264" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Result:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVI-qu-LCd">
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="inV-uW-U9i">
-                                <rect key="frame" x="128" y="348" width="49" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="inV-uW-U9i">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="49" id="kgZ-VD-X7R"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Deal">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -155,10 +160,8 @@
                                     <action selector="Deal:" destination="A3G-3I-fio" eventType="touchUpInside" id="Bk9-Eg-w8E"/>
                                 </connections>
                             </button>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="veW-a7-tRv">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="310"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="0.22526083359999999" green="1" blue="0.18223391410000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="243" horizontalCompressionResistancePriority="709" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="veW-a7-tRv">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Vxr-yq-xAP">
                                     <size key="itemSize" width="70" height="46"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -173,23 +176,22 @@
                                             <rect key="frame" x="0.0" y="0.0" width="70" height="46"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Hb8-CS-ABC">
-                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="47"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                    <state key="normal" title="Button">
-                                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <state key="highlighted">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                </button>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YoR-uc-Gwh">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="YoR-uc-Gwh" firstAttribute="bottom" secondItem="9Pu-sp-5H5" secondAttribute="bottom" type="default" id="0Zs-ES-fKt"/>
+                                            <constraint firstItem="YoR-uc-Gwh" firstAttribute="leading" secondItem="9Pu-sp-5H5" secondAttribute="leading" type="default" id="DJa-5g-z0O"/>
+                                            <constraint firstItem="YoR-uc-Gwh" firstAttribute="top" secondItem="9Pu-sp-5H5" secondAttribute="top" type="default" id="R9X-mH-F8D"/>
+                                            <constraint firstItem="YoR-uc-Gwh" firstAttribute="trailing" secondItem="9Pu-sp-5H5" secondAttribute="trailing" type="default" id="TTH-vN-47z"/>
+                                        </constraints>
                                         <connections>
-                                            <outlet property="button" destination="Hb8-CS-ABC" id="OVL-2c-Z11"/>
+                                            <outlet property="label" destination="YoR-uc-Gwh" id="fuQ-ND-SQQ"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -197,9 +199,33 @@
                                     <outlet property="dataSource" destination="A3G-3I-fio" id="DbK-pO-xj4"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nSb-Gs-GJa">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="3 more">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="inV-uW-U9i" firstAttribute="leading" secondItem="BNC-wq-DXP" secondAttribute="leading" constant="128" id="7iK-4w-dzI"/>
+                            <constraint firstAttribute="bottom" secondItem="inV-uW-U9i" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="AMt-le-m5q"/>
+                            <constraint firstItem="inV-uW-U9i" firstAttribute="top" secondItem="xVI-qu-LCd" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Gns-t4-Nkp"/>
+                            <constraint firstItem="veW-a7-tRv" firstAttribute="leading" secondItem="BNC-wq-DXP" secondAttribute="leading" type="default" id="Gqq-Lc-MgV"/>
+                            <constraint firstItem="inV-uW-U9i" firstAttribute="baseline" secondItem="kks-WG-qUz" secondAttribute="baseline" type="default" id="Rn3-cz-oxx"/>
+                            <constraint firstItem="xVI-qu-LCd" firstAttribute="top" secondItem="veW-a7-tRv" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="W1k-vb-JrR"/>
+                            <constraint firstItem="xVI-qu-LCd" firstAttribute="centerX" secondItem="inV-uW-U9i" secondAttribute="centerX" type="default" id="YNr-tw-eJ4"/>
+                            <constraint firstItem="veW-a7-tRv" firstAttribute="trailing" secondItem="BNC-wq-DXP" secondAttribute="trailing" type="default" id="aKn-yD-UrS"/>
+                            <constraint firstAttribute="trailing" secondItem="kks-WG-qUz" secondAttribute="trailing" constant="36" id="eeM-yu-6jy"/>
+                            <constraint firstItem="veW-a7-tRv" firstAttribute="top" secondItem="BNC-wq-DXP" secondAttribute="top" type="default" id="lqh-FN-zKW"/>
+                            <constraint firstAttribute="bottom" secondItem="nSb-Gs-GJa" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="mdj-ct-Q4r"/>
+                            <constraint firstItem="nSb-Gs-GJa" firstAttribute="leading" secondItem="BNC-wq-DXP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="y6z-qa-8cr"/>
+                        </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="6Yy-jC-jtL" appends="YES" id="nyf-fs-kz2"/>
                         </connections>
@@ -207,7 +233,6 @@
                     <tabBarItem key="tabBarItem" title="Set" image="square_30x30.png" id="Lfi-wh-D6i"/>
                     <connections>
                         <outlet property="cardCollectionView" destination="veW-a7-tRv" id="Koe-RZ-day"/>
-                        <outlet property="flipsLabel" destination="hGR-RN-dZc" id="aVx-GZ-2MI"/>
                         <outlet property="lastResultLabel" destination="xVI-qu-LCd" id="QJV-Fl-Jrk"/>
                         <outlet property="scoreLabel" destination="kks-WG-qUz" id="MND-eg-hFd"/>
                     </connections>
@@ -226,52 +251,6 @@
         <image name="spade_30x30.png" width="30" height="30"/>
         <image name="square_30x30.png" width="30" height="30"/>
     </resources>
-    <classes>
-        <class className="CardGameViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CardGameViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="Deal:"/>
-                <relationship kind="action" name="flipCard:" candidateClass="UITapGestureRecognizer"/>
-                <relationship kind="outlet" name="cardCollectionView" candidateClass="UICollectionView"/>
-                <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lastResultLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="PlayingCardCollectionViewCell" superclassName="UICollectionViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlayingCardCollectionViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="playingCardView" candidateClass="PlayingCardView"/>
-            </relationships>
-        </class>
-        <class className="PlayingCardView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlayingCardView.h"/>
-        </class>
-        <class className="PlayingCardViewController" superclassName="CardGameViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlayingCardViewController.h"/>
-        </class>
-        <class className="SetCardCollectionViewCell" superclassName="UICollectionViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SetCardCollectionViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="button" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="SetGameViewController" superclassName="CardGameViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SetGameViewController.h"/>
-        </class>
-        <class className="UICollectionReusableView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
-        </class>
-        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
-        </class>
-        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

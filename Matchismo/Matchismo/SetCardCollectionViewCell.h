@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SetCardCollectionViewCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet UIButton *button;
+@property (weak, nonatomic) IBOutlet UILabel *label;
 
 @end

@@ -12,9 +12,10 @@
 @interface CardGameViewController : UIViewController
 
 @property (nonatomic) int noOfCardsToMatch;
+@property (nonatomic) int initialNoOfCards;
 @property (nonatomic,readonly) NSString *reuseId;
 - (Deck *)CreateDeck;   //abstract
-- (void) updateCell: (UICollectionViewCell *)cell forCard:(Card *)card; //abstract
+- (void) updateCell: (UICollectionViewCell *)cell forCard:(Card *)card animate:(BOOL)isAnimated; //abstract
 - (NSAttributedString* ) cardAttrString:(Card *)card;  //abstract
 
 
