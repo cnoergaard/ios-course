@@ -63,12 +63,31 @@
     if ([cell isKindOfClass:[SetCardCollectionViewCell class]] &&
         [card isKindOfClass:[SetCard class]])
     {
-        UILabel *lab = ((SetCardCollectionViewCell *)cell).label;
-        lab.attributedText = [self cardAttrString:card];
-        lab.backgroundColor = card.isFaceUp?[UIColor grayColor]:[UIColor clearColor];
+        SetCard *setCard = (SetCard *)card;
+        SetCardView *setCardView = ((SetCardCollectionViewCell *)cell).setCardView;
+        if (isAnimated)
+        {
+            [UIView transitionWithView:setCardView
+                              duration:0.5
+                               options:UIViewAnimationOptionTransitionFlipFromLeft
+                            animations:^{
+                                setCardView.number = setCard.number;
+                                setCardView.symbol = setCard.symbol;
+                                setCardView.shading = setCard.shading;
+                                setCardView.color = setCard.color;
+                                setCardView.faceUp = setCard.isFaceUp;
+                            }
+                            completion:NULL];
+        }
+        else
+        {
+            setCardView.number = setCard.number;
+            setCardView.symbol = setCard.symbol;
+            setCardView.shading = setCard.shading;
+            setCardView.color = setCard.color;
+            setCardView.faceUp = setCard.isFaceUp;            
+        };
         
-        lab.enabled = !card.isUnplayable;
-        lab.alpha = card.isUnplayable? 0.0 : 1.0;
     }
 }
 

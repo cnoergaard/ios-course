@@ -7,6 +7,7 @@
 //
 
 #import "SetCardView.h"
+#import "SetCard.h"
 
 @implementation SetCardView
 
@@ -61,131 +62,111 @@
 
 - (void)drawRect:(CGRect)rect
 {
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSaveGState(context);
+    
     // Drawing code
     UIBezierPath *roundedRect = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:CORNER_RADIUS];
     
     [roundedRect addClip];
+    UIColor *background = self.faceUp?[UIColor grayColor]:[UIColor whiteColor];
     
-    [[UIColor whiteColor] setFill];
+    [background setFill];
     UIRectFill(self.bounds);
     
-    if (self.faceUp) {
-        [self drawPips];
-        [self drawCorners];
-    } else {
-        [[UIImage imageNamed:@"cardback.png"] drawInRect:self.bounds];
+    
+    UIBezierPath *symbolPath = [self pathForSymbol];
+    
+#define SYMBOL_HEIGHT 0.22
+#define SYMBOL_WIDTH 0.8
+#define SYMBOL_OFFSET_Y 0.125
+#define SYMBOL_OFFSET_X 0
+    
+#define SYMBOLSTART @{@"1":@[@0.375], @"2":@[@0.2,@0.55], @"3":@[@0.05,@0.375,@0.70]}
+#define COLORTABLE  @{SET_COLOR1:[UIColor redColor], SET_COLOR2:[UIColor greenColor], SET_COLOR3:[UIColor blueColor]}
+#define SHADINGTABLE  @{SET_SHADING1:@0.3, SET_SHADING2:@1.0, SET_SHADING3:@0.0}
+    
+    
+    UIColor *color =COLORTABLE[self.color];
+    CGContextSetFillColorWithColor(context, color.CGColor);
+    CGContextSetStrokeColorWithColor(context, color.CGColor);
+    CGContextSetLineWidth(context, 5.0);
+    
+    NSArray *symbolstart = SYMBOLSTART[self.number];
+    for (NSNumber *offset in symbolstart) {
+        
+        [symbolPath applyTransform: CGAffineTransformMakeTranslation(0, [offset floatValue] * self.bounds.size.height)];
+        [symbolPath fillWithBlendMode: kCGBlendModeNormal alpha:[SHADINGTABLE[self.shading] floatValue]];
+        [symbolPath stroke];
+        [symbolPath applyTransform: CGAffineTransformMakeTranslation(0, -[offset floatValue] * self.bounds.size.height)];
     }
     
     [[UIColor blackColor] setStroke];
     [roundedRect stroke];
-}
-
-#define PIP_FONT_SCALE_FACTOR 0.20
-#define CORNER_OFFSET 2.0
-
-- (void)drawCorners
-{
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.alignment = NSTextAlignmentCenter;
-    
-    UIFont *cornerFont = [UIFont systemFontOfSize:self.bounds.size.width * PIP_FONT_SCALE_FACTOR];
-    
-    NSAttributedString *cornerText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n%@%@\n%@", self.symbol, self.shading, self.color, self.number] attributes:@{ NSParagraphStyleAttributeName : paragraphStyle, NSFontAttributeName : cornerFont }];
-    
-    CGRect textBounds;
-    textBounds.origin = CGPointMake(CORNER_OFFSET, CORNER_OFFSET);
-    textBounds.size = [cornerText size];
-    [cornerText drawInRect:textBounds];
-    
-    [self pushContextAndRotateUpsideDown];
-    [cornerText drawInRect:textBounds];
-    [self popContext];
-}
-
-- (void)pushContextAndRotateUpsideDown
-{
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSaveGState(context);
-    CGContextTranslateCTM(context, self.bounds.size.width, self.bounds.size.height);
-    CGContextRotateCTM(context, M_PI);
-}
-
-- (void)popContext
-{
     CGContextRestoreGState(UIGraphicsGetCurrentContext());
 }
 
-#pragma mark - Draw Pips
 
-#define PIP_HOFFSET_PERCENTAGE 0.165
-#define PIP_VOFFSET1_PERCENTAGE 0.090
-#define PIP_VOFFSET2_PERCENTAGE 0.175
-#define PIP_VOFFSET3_PERCENTAGE 0.270
 
-- (void)drawPips
-{
-/*    if ((self.rank == 1) || (self.rank == 5) || (self.rank == 9) || (self.rank == 3)) {
-        [self drawPipsWithHorizontalOffset:0
-                            verticalOffset:0
-                        mirroredVertically:NO];
-    }
-    if ((self.rank == 6) || (self.rank == 7) || (self.rank == 8)) {
-        [self drawPipsWithHorizontalOffset:PIP_HOFFSET_PERCENTAGE
-                            verticalOffset:0
-                        mirroredVertically:NO];
-    }
-    if ((self.rank == 2) || (self.rank == 3) || (self.rank == 7) || (self.rank == 8) || (self.rank == 10)) {
-        [self drawPipsWithHorizontalOffset:0
-                            verticalOffset:PIP_VOFFSET2_PERCENTAGE
-                        mirroredVertically:(self.rank != 7)];
-    }
-    if ((self.rank == 4) || (self.rank == 5) || (self.rank == 6) || (self.rank == 7) || (self.rank == 8) || (self.rank == 9) || (self.rank == 10)) {
-        [self drawPipsWithHorizontalOffset:PIP_HOFFSET_PERCENTAGE
-                            verticalOffset:PIP_VOFFSET3_PERCENTAGE
-                        mirroredVertically:YES];
-    }
-    if ((self.rank == 9) || (self.rank == 10)) {
-        [self drawPipsWithHorizontalOffset:PIP_HOFFSET_PERCENTAGE
-                            verticalOffset:PIP_VOFFSET1_PERCENTAGE
-                        mirroredVertically:YES];
-    }
-*/
- }
-
-- (void)drawPipsWithHorizontalOffset:(CGFloat)hoffset
-                      verticalOffset:(CGFloat)voffset
-                          upsideDown:(BOOL)upsideDown
-{
-    if (upsideDown) [self pushContextAndRotateUpsideDown];
-    CGPoint middle = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
-    UIFont *pipFont = [UIFont systemFontOfSize:self.bounds.size.width * PIP_FONT_SCALE_FACTOR];
-    NSAttributedString *attributedSuit = [[NSAttributedString alloc] initWithString:self.symbol attributes:@{ NSFontAttributeName : pipFont }];
-    
-    CGSize pipSize = [attributedSuit size];
-    CGPoint pipOrigin = CGPointMake(
-                                    middle.x-pipSize.width/2.0-hoffset*self.bounds.size.width,
-                                    middle.y-pipSize.height/2.0-voffset*self.bounds.size.height
-                                    );
-    [attributedSuit drawAtPoint:pipOrigin];
-    if (hoffset) {
-        pipOrigin.x += hoffset*2.0*self.bounds.size.width;
-        [attributedSuit drawAtPoint:pipOrigin];
-    }
-    if (upsideDown) [self popContext];
+- (UIBezierPath *)pathForSymbol{
+    if ([self.symbol isEqualToString:SET_SYMBOL1])
+        return [self pathForDiamond];
+    else if ([self.symbol isEqualToString:SET_SYMBOL2])
+        return [self pathForOval];
+    else if ([self.symbol isEqualToString:SET_SYMBOL3])
+        return [self pathForSquiggle];
+    else return nil;
 }
 
-- (void)drawPipsWithHorizontalOffset:(CGFloat)hoffset
-                      verticalOffset:(CGFloat)voffset
-                  mirroredVertically:(BOOL)mirroredVertically
+- (CGRect) symbolRect
 {
-    [self drawPipsWithHorizontalOffset:hoffset
-                        verticalOffset:voffset
-                            upsideDown:NO];
-    if (mirroredVertically) {
-        [self drawPipsWithHorizontalOffset:hoffset
-                            verticalOffset:voffset
-                                upsideDown:YES];
-    }
+    CGRect symbolBounds;
+    
+    symbolBounds.size = CGSizeMake(self.bounds.size.width * SYMBOL_WIDTH, self.bounds.size.height * SYMBOL_HEIGHT);
+    symbolBounds.origin = CGPointMake((self.bounds.size.width-symbolBounds.size.width)/2,0);
+    
+    return symbolBounds;
+}
+
+- (UIBezierPath *)pathForDiamond {
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    CGRect rect = [self symbolRect];
+    [path moveToPoint:CGPointMake(rect.origin.x + rect.size.width/2,rect.origin.y)];
+    [path addLineToPoint:CGPointMake(rect.origin.x + rect.size.width,rect.origin.y+rect.size.height/2)];
+    [path addLineToPoint:CGPointMake(rect.origin.x + rect.size.width/2,rect.origin.y+rect.size.height)];
+    [path addLineToPoint:CGPointMake(rect.origin.x ,rect.origin.y+rect.size.height/2)];
+    [path closePath];
+    
+    return path;
+}
+
+
+- (UIBezierPath *)pathForOval
+{
+    return [UIBezierPath bezierPathWithOvalInRect:[self symbolRect]];
+}
+
+#define SIZE_OF_OVAL_CURVE 10
+
+- (UIBezierPath*) pathForSquiggle
+{
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    CGRect rect = [self symbolRect];
+    CGPoint tl = rect.origin;
+    CGPoint middle = CGPointMake(rect.origin.x + rect.size.width/2, rect.origin.y+rect.size.height/2);
+    CGPoint br = CGPointMake(rect.origin.x + rect.size.width, rect.origin.y+rect.size.height);
+    
+    [path moveToPoint:CGPointMake(br.x,tl.y)];
+    [path addQuadCurveToPoint:br controlPoint:CGPointMake(br.x+SIZE_OF_OVAL_CURVE, middle.y)];
+    [path addCurveToPoint:CGPointMake(tl.x,br.y)
+            controlPoint1:CGPointMake(middle.x, br.y+rect.size.height/2)
+            controlPoint2:middle];
+    [path addQuadCurveToPoint:tl controlPoint:CGPointMake(tl.x-SIZE_OF_OVAL_CURVE, middle.y)];
+    [path addCurveToPoint:CGPointMake(br.x,tl.y)
+            controlPoint1:CGPointMake(middle.x, tl.y-rect.size.height/2)
+            controlPoint2:middle];
+    
+    return path;
 }
 
 #pragma mark - Initialization

@@ -139,11 +139,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Result:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVI-qu-LCd">
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="inV-uW-U9i">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="49" id="kgZ-VD-X7R"/>
@@ -162,36 +157,37 @@
                             </button>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="243" horizontalCompressionResistancePriority="709" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="veW-a7-tRv">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="311" id="Ujf-Jb-4fp"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Vxr-yq-xAP">
-                                    <size key="itemSize" width="70" height="46"/>
+                                    <size key="itemSize" width="70" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SetCard" id="9Pu-sp-5H5" customClass="SetCardCollectionViewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="70" height="46"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="70" height="46"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="70" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YoR-uc-Gwh">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="anH-Hj-Gde" customClass="SetCardView">
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="YoR-uc-Gwh" firstAttribute="bottom" secondItem="9Pu-sp-5H5" secondAttribute="bottom" type="default" id="0Zs-ES-fKt"/>
-                                            <constraint firstItem="YoR-uc-Gwh" firstAttribute="leading" secondItem="9Pu-sp-5H5" secondAttribute="leading" type="default" id="DJa-5g-z0O"/>
-                                            <constraint firstItem="YoR-uc-Gwh" firstAttribute="top" secondItem="9Pu-sp-5H5" secondAttribute="top" type="default" id="R9X-mH-F8D"/>
-                                            <constraint firstItem="YoR-uc-Gwh" firstAttribute="trailing" secondItem="9Pu-sp-5H5" secondAttribute="trailing" type="default" id="TTH-vN-47z"/>
+                                            <constraint firstItem="anH-Hj-Gde" firstAttribute="top" secondItem="9Pu-sp-5H5" secondAttribute="top" type="user" id="6QX-M2-bas"/>
+                                            <constraint firstItem="anH-Hj-Gde" firstAttribute="leading" secondItem="9Pu-sp-5H5" secondAttribute="leading" type="default" id="8VL-Xw-yxy"/>
+                                            <constraint firstAttribute="bottom" secondItem="anH-Hj-Gde" secondAttribute="bottom" type="user" id="L3b-we-vx4"/>
+                                            <constraint firstItem="anH-Hj-Gde" firstAttribute="trailing" secondItem="9Pu-sp-5H5" secondAttribute="trailing" type="default" id="znQ-pU-1jc"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="label" destination="YoR-uc-Gwh" id="fuQ-ND-SQQ"/>
+                                            <outlet property="setCardView" destination="anH-Hj-Gde" id="MGA-8u-NAL"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -218,11 +214,9 @@
                         <constraints>
                             <constraint firstItem="inV-uW-U9i" firstAttribute="leading" secondItem="BNC-wq-DXP" secondAttribute="leading" constant="128" id="7iK-4w-dzI"/>
                             <constraint firstAttribute="bottom" secondItem="inV-uW-U9i" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="AMt-le-m5q"/>
-                            <constraint firstItem="inV-uW-U9i" firstAttribute="top" secondItem="xVI-qu-LCd" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Gns-t4-Nkp"/>
+                            <constraint firstAttribute="bottom" secondItem="kks-WG-qUz" secondAttribute="bottom" constant="33" id="BWE-9J-bZ4"/>
                             <constraint firstItem="veW-a7-tRv" firstAttribute="leading" secondItem="BNC-wq-DXP" secondAttribute="leading" type="default" id="Gqq-Lc-MgV"/>
                             <constraint firstItem="inV-uW-U9i" firstAttribute="baseline" secondItem="kks-WG-qUz" secondAttribute="baseline" type="default" id="Rn3-cz-oxx"/>
-                            <constraint firstItem="xVI-qu-LCd" firstAttribute="top" secondItem="veW-a7-tRv" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="W1k-vb-JrR"/>
-                            <constraint firstItem="xVI-qu-LCd" firstAttribute="centerX" secondItem="inV-uW-U9i" secondAttribute="centerX" type="default" id="YNr-tw-eJ4"/>
                             <constraint firstItem="veW-a7-tRv" firstAttribute="trailing" secondItem="BNC-wq-DXP" secondAttribute="trailing" type="default" id="aKn-yD-UrS"/>
                             <constraint firstAttribute="trailing" secondItem="kks-WG-qUz" secondAttribute="trailing" constant="36" id="eeM-yu-6jy"/>
                             <constraint firstItem="veW-a7-tRv" firstAttribute="top" secondItem="BNC-wq-DXP" secondAttribute="top" type="default" id="lqh-FN-zKW"/>
@@ -236,7 +230,6 @@
                     <tabBarItem key="tabBarItem" title="Set" image="square_30x30.png" id="Lfi-wh-D6i"/>
                     <connections>
                         <outlet property="cardCollectionView" destination="veW-a7-tRv" id="Koe-RZ-day"/>
-                        <outlet property="lastResultLabel" destination="xVI-qu-LCd" id="QJV-Fl-Jrk"/>
                         <outlet property="moreButton" destination="nSb-Gs-GJa" id="9j3-Fa-Lak"/>
                         <outlet property="scoreLabel" destination="kks-WG-qUz" id="MND-eg-hFd"/>
                     </connections>
@@ -248,7 +241,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-367" y="670"/>
+            <point key="canvasLocation" x="-394" y="632"/>
         </scene>
     </scenes>
     <resources>
@@ -259,9 +252,6 @@
         <class className="CardGameViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CardGameViewController.h"/>
             <relationships>
-                <relationship kind="action" name="Deal:"/>
-                <relationship kind="action" name="dealMoreCards:"/>
-                <relationship kind="action" name="flipCard:" candidateClass="UITapGestureRecognizer"/>
                 <relationship kind="outlet" name="cardCollectionView" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lastResultLabel" candidateClass="UILabel"/>
@@ -287,8 +277,11 @@
         <class className="SetCardCollectionViewCell" superclassName="UICollectionViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SetCardCollectionViewCell.h"/>
             <relationships>
-                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="setCardView" candidateClass="SetCardView"/>
             </relationships>
+        </class>
+        <class className="SetCardView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SetCardView.h"/>
         </class>
         <class className="SetGameViewController" superclassName="CardGameViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SetGameViewController.h"/>
@@ -301,9 +294,6 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

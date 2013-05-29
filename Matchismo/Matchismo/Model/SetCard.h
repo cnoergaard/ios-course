@@ -8,6 +8,18 @@
 
 #import "Card.h"
 
+#define SET_SYMBOL1 @"diamond"
+#define SET_SYMBOL2 @"oval"
+#define SET_SYMBOL3 @"squiggle"
+#define SET_SHADING1 @"striped"
+#define SET_SHADING2 @"solid"
+#define SET_SHADING3 @"open"
+#define SET_COLOR1 @"red"
+#define SET_COLOR2 @"green"
+#define SET_COLOR3 @"blue"
+
+
+
 @interface SetCard : Card
 @property (strong,nonatomic) NSString *number;
 @property (strong,nonatomic) NSString *symbol;

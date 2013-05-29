@@ -15,7 +15,7 @@
 + (NSArray *)validShadings
 {
     static NSArray *validShadings = nil;
-    if (!validShadings) validShadings = @[@"striped",@"solid",@"open"];
+    if (!validShadings) validShadings = @[SET_SHADING1,SET_SHADING2,SET_SHADING3];
     return validShadings;
 }
 
@@ -29,7 +29,7 @@
 + (NSArray *)validSymbols
 {
     static NSArray *validSymbols = nil;
-    if (!validSymbols) validSymbols = @[@"▲",@"●",@"■"];
+    if (!validSymbols) validSymbols = @[SET_SYMBOL1,SET_SYMBOL2,SET_SYMBOL3];
     return validSymbols;
 }
 
@@ -65,7 +65,7 @@
 + (NSArray *)validColors
 {
     static NSArray *validColors = nil;
-    if (!validColors) validColors = @[@"red",@"green",@"blue"];
+    if (!validColors) validColors = @[SET_COLOR1,SET_COLOR2,SET_COLOR3];
     return validColors;
 }
 
@@ -82,17 +82,17 @@
 }
 
 /*- (BOOL)selMatch:(SEL)sel first:(Set*)first second:(Set*) second {
-    NSString *f = [self performSelector:sel];
-    NSString *s = [first performSelector:sel];
-    NSString *t = [second performSelector:sel];
-    return (([f isEqualToString:s] &&
-             [s isEqualToString:t] &&
-             [f isEqualToString:t]) ||
-            (![f isEqualToString:s] &&
-             ![s isEqualToString:t] &&
-             ![f isEqualToString:t]));
-
-}
+ NSString *f = [self performSelector:sel];
+ NSString *s = [first performSelector:sel];
+ NSString *t = [second performSelector:sel];
+ return (([f isEqualToString:s] &&
+ [s isEqualToString:t] &&
+ [f isEqualToString:t]) ||
+ (![f isEqualToString:s] &&
+ ![s isEqualToString:t] &&
+ ![f isEqualToString:t]));
+ 
+ }
  */
 
 + (BOOL)propMatch:(NSString *)first second:(NSString *)second third:(NSString*)third
