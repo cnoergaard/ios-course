@@ -17,11 +17,18 @@
 
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
-@property (weak, nonatomic) IBOutlet UILabel *lastResultLabel;
 @property (weak, nonatomic) IBOutlet UIButton *moreButton;
 @end
 
 @implementation CardGameViewController
+
+- (Deck *)CreateDeck{ return nil; } //abstract
+- (void) updateCell: (UICollectionViewCell *)cell
+            forCard:(Card *)card
+            animate:(BOOL)isAnimated {} //abstract
+- (NSString *)reuseId { return nil; } //abstract
+- (void) updateResult: (NSString*)ResultString forCard:(Card *)card with:(NSArray*) others{}; //abstract
+- (BOOL) doRemoveMatches { return NO; }
 
 
 - (CardMatchingGame*)game {
@@ -35,23 +42,16 @@
     return _game;
 }
 
-- (Deck *)CreateDeck{ return nil; } //abstract
-- (void) updateCell: (UICollectionViewCell *)cell
-            forCard:(Card *)card
-            animate:(BOOL)isAnimated {} //abstract
-- (NSAttributedString* ) cardAttrString:(Card *)card { return nil;} //abstract
-- (NSString *)reuseId { return nil; } //abstract
-
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
 }
-- (BOOL) doRemoveMatches { return NO; }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return self.game.numberOfCardsInGame;
 }
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.reuseId forIndexPath:indexPath];
@@ -99,6 +99,7 @@
     self.flipCount = 0;
     [self.cardCollectionView reloadData];
     self.moreButton.enabled = YES;
+    [self updateResult:nil];
 }
 
 - (IBAction)dealMoreCards:(id)sender
@@ -119,6 +120,11 @@
    }
 }
 
+- (void) viewDidLoad
+{
+  [self updateResult:nil];
+}
+
 - (void) updateUI:(NSUInteger)animateIndex
 {
     for (UICollectionViewCell *cell in [self.cardCollectionView visibleCells]) {
@@ -126,47 +132,24 @@
         Card *card =  [self.game cardAtIndex:path.item];
         [self updateCell:cell forCard:card animate:(path.item==animateIndex)];
     }
-    self.lastResultLabel.attributedText = [self getResult:self.game.lastResult];
+    [self updateResult:self.game.lastResult];
     self.scoreLabel.text = [NSString stringWithFormat:@"Score :%d", self.game.score];
 }
 
-- (NSAttributedString *) getResult:(GameResult *)result {
-    NSMutableAttributedString *attres;
-    attres = [[NSMutableAttributedString alloc] initWithAttributedString:[self cardAttrString:result.cardPlayed]];
+- (void) updateResult: (GameResult *)result {
+    NSString *ResultString;
     if (result.type == kFlip)
-        [attres appendAttributedString:
-          [[NSAttributedString alloc] initWithString:@" flipped"]];
+      ResultString = @"flipped";
     else if (result.type == kFlipUp)
-        [attres appendAttributedString:
-         [[NSAttributedString alloc] initWithString:@" turned up"]];
+      ResultString =  @"turned up";
+    else if (result.type == kMatch)
+      ResultString =  @"matched with ";
+    else if (result.type == kMisMatch)
+      ResultString =  @"does not match with";
     else
-    {
-        NSMutableAttributedString *others = [[NSMutableAttributedString alloc] init];
-        for (Card *othercard in result.otherCards)
-        {
-          [others appendAttributedString:[self cardAttrString:othercard]];
-           if (othercard!=result.otherCards.lastObject)
-               [others appendAttributedString: [[NSAttributedString alloc] initWithString:@" & "]];
-        }
-       if (result.type == kMatch)
-       {
-           [attres appendAttributedString:
-             [[NSAttributedString alloc] initWithString:@" matched with "]];
-           [attres appendAttributedString:others];
-           [attres appendAttributedString:
-            [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" for %d points", result.score]]];
-       }
-       else if (result.type == kMisMatch)
-       {
-        [attres appendAttributedString:
-         [[NSAttributedString alloc] initWithString:@" does not match with "]];
-        [attres appendAttributedString:others];
-        [attres appendAttributedString:
-         [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@". %d points penalty", -result.score]]];
-       }
-       else attres = nil;
-    }
-   return attres;
+      ResultString =  @"";
+    [self updateResult:ResultString forCard:result.cardPlayed with:result.otherCards];
 }
+
 
 @end

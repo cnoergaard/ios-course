@@ -58,7 +58,7 @@
 
 #pragma mark - Drawing
 
-#define CORNER_RADIUS 12.0
+#define CORNER_RADIUS 1.0
 
 - (void)drawRect:(CGRect)rect
 {
@@ -101,8 +101,10 @@
         [symbolPath applyTransform: CGAffineTransformMakeTranslation(0, -[offset floatValue] * self.bounds.size.height)];
     }
     
+    /*
     [[UIColor blackColor] setStroke];
     [roundedRect stroke];
+     */
     CGContextRestoreGState(UIGraphicsGetCurrentContext());
 }
 

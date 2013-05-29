@@ -17,7 +17,7 @@
 @property (nonatomic,readonly) BOOL doRemoveMatches;
 - (Deck *)CreateDeck;   //abstract
 - (void) updateCell: (UICollectionViewCell *)cell forCard:(Card *)card animate:(BOOL)isAnimated; //abstract
-- (NSAttributedString* ) cardAttrString:(Card *)card;  //abstract
+- (void) updateResult: (NSString*)ResultString forCard:(Card *)card with:(NSArray*) others; //abstract
 
 
 @end

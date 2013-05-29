@@ -13,6 +13,10 @@
 #import "SetCardCollectionViewCell.h"
 
 @interface SetGameViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *lastResultLabel;
+@property (weak, nonatomic) IBOutlet SetCardView *playedCardView;
+@property (weak, nonatomic) IBOutlet SetCardView *otherCard2View;
+@property (weak, nonatomic) IBOutlet SetCardView *otherCard1View;
 @end
 
 @implementation SetGameViewController
@@ -32,28 +36,29 @@
 
 - (BOOL) doRemoveMatches { return YES; }
 
-
-#define COLORS @{@"red":[UIColor redColor],@"green":[UIColor greenColor],@"blue":[UIColor blueColor]}
-#define SHADINGS @{@"striped":@"0.4",@"solid":@"1.0",@"open":@"0.0"}
-
-- (NSAttributedString* ) cardAttrString:(Card *)card
+- (void) updateResult: (NSString*)ResultString forCard:(Card *)card with:(NSArray*) others
 {
-    if ([card isKindOfClass:[SetCard class]])
-    {
-        SetCard *setcard = (SetCard *)card;
-        NSMutableString *symbols = [[NSMutableString alloc] init];
-        NSUInteger number = [setcard.number intValue];
-        for (NSUInteger i=0; i<number; i++)
-            [symbols appendString:setcard.symbol];
-        NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:symbols];
-        UIColor *color = [COLORS objectForKey:setcard.color];
-        [attr setAttributes:@{NSForegroundColorAttributeName:[color colorWithAlphaComponent:[[SHADINGS objectForKey:setcard.shading] floatValue]],
- NSStrokeColorAttributeName:color,
- NSStrokeWidthAttributeName:@-6.0} range:NSMakeRange(0, number)];
-        return attr;
-    }
-    else
-        return nil;
+    SetCard *other1=NULL;
+    SetCard *other2=NULL;
+    self.lastResultLabel.text = ResultString;
+    [self updateView:self.playedCardView forCard:(SetCard *)card faceUp:NO];
+    if (others.count>0)
+      other1 = [others objectAtIndex:0];
+    if (others.count>1)
+        other2 = [others objectAtIndex:1];
+
+    [self updateView:self.playedCardView forCard:(SetCard *)card faceUp:NO];
+    [self updateView:self.otherCard2View forCard:other2 faceUp:NO];
+    [self updateView:self.otherCard1View forCard:other1 faceUp:NO];
+};
+
+- (void) updateView: (SetCardView *)setCardView forCard:(SetCard *)setCard faceUp:(BOOL)faceUp
+{
+    setCardView.number = setCard.number;
+    setCardView.symbol = setCard.symbol;
+    setCardView.shading = setCard.shading;
+    setCardView.color = setCard.color;
+    setCardView.faceUp = faceUp;
 }
 
 - (void) updateCell: (UICollectionViewCell *)cell
@@ -63,6 +68,7 @@
     if ([cell isKindOfClass:[SetCardCollectionViewCell class]] &&
         [card isKindOfClass:[SetCard class]])
     {
+        
         SetCard *setCard = (SetCard *)card;
         SetCardView *setCardView = ((SetCardCollectionViewCell *)cell).setCardView;
         if (isAnimated)
@@ -70,24 +76,10 @@
             [UIView transitionWithView:setCardView
                               duration:0.5
                                options:UIViewAnimationOptionTransitionFlipFromLeft
-                            animations:^{
-                                setCardView.number = setCard.number;
-                                setCardView.symbol = setCard.symbol;
-                                setCardView.shading = setCard.shading;
-                                setCardView.color = setCard.color;
-                                setCardView.faceUp = setCard.isFaceUp;
-                            }
+                            animations:^{ [self updateView:setCardView forCard:setCard faceUp:setCard.isFaceUp]; }
                             completion:NULL];
         }
-        else
-        {
-            setCardView.number = setCard.number;
-            setCardView.symbol = setCard.symbol;
-            setCardView.shading = setCard.shading;
-            setCardView.color = setCard.color;
-            setCardView.faceUp = setCard.isFaceUp;            
-        };
-        
+        else [self updateView:setCardView forCard:setCard faceUp:setCard.isFaceUp];
     }
 }
 

@@ -57,17 +57,19 @@
 
 #pragma mark - Drawing
 
-#define CORNER_RADIUS 12.0
+#define CORNER_RADIUS 0.12
 
 - (void)drawRect:(CGRect)rect
 {
     // Drawing code
-    UIBezierPath *roundedRect = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:CORNER_RADIUS];
+    UIBezierPath *roundedRect = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:CORNER_RADIUS*self.bounds.size.width];
     
     [roundedRect addClip];
     
     [[UIColor whiteColor] setFill];
     UIRectFill(self.bounds);
+    if (self.suit==nil)
+        return;
     
     if (self.faceUp) {
         UIImage *faceImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@%@.jpg", [self rankAsString], self.suit]];

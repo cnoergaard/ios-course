@@ -12,7 +12,9 @@
 #import "PlayingCardCollectionViewCell.h"
 
 @interface PlayingCardViewController ()
-
+@property (weak, nonatomic) IBOutlet UILabel *lastResultLabel;
+@property (weak, nonatomic) IBOutlet PlayingCardView *playedCardView;
+@property (weak, nonatomic) IBOutlet PlayingCardView *otherCardView;
 @end
 
 @implementation PlayingCardViewController
@@ -30,6 +32,33 @@
 
 - (int )initialNoOfCards { return 20; }
 
+- (void) updateResult: (NSString*)ResultString forCard:(Card *)card with:(NSArray*) others
+{
+    PlayingCard *other=NULL;
+    PlayingCard *playingcard = (PlayingCard *)card;
+    if (others.count>0)
+        other = [others objectAtIndex:0];
+    
+    self.playedCardView.suit = playingcard.suit;
+    self.playedCardView.rank = playingcard.rank;
+    self.playedCardView.faceUp = YES;
+
+    self.otherCardView.suit = other.suit;
+    self.otherCardView.rank = other.rank;
+    self.otherCardView.faceUp = YES;
+
+    self.lastResultLabel.text = ResultString;
+};
+
+- (void) updateView: (PlayingCardView *)playingCardView forCard:(PlayingCard *)playingcard
+{
+    playingCardView.suit = playingcard.suit;
+    playingCardView.rank = playingcard.rank;
+    playingCardView.faceUp = playingcard.isFaceUp;
+    playingCardView.alpha = playingcard.isUnplayable?0.3:1.0;
+
+}
+
 - (void) updateCell: (UICollectionViewCell *)cell
             forCard:(Card *)card
             animate:(BOOL)isAnimated
@@ -44,30 +73,12 @@
           [UIView transitionWithView:playingCardView
                           duration:0.5
                            options:UIViewAnimationOptionTransitionFlipFromLeft
-                        animations:^{
-                            playingCardView.suit = playingcard.suit;
-                            playingCardView.rank = playingcard.rank;
-                            playingCardView.faceUp = playingcard.isFaceUp;
-                            playingCardView.alpha = playingcard.isUnplayable?0.3:1.0;
-                        }
-                          completion:NULL];
+                          animations:^{ [self updateView:playingCardView forCard:playingcard]; }                          completion:NULL];
         }
-        else
-        {
-            playingCardView.suit = playingcard.suit;
-            playingCardView.rank = playingcard.rank;
-            playingCardView.faceUp = playingcard.isFaceUp;
-            playingCardView.alpha = playingcard.isUnplayable?0.3:1.0;
-  
-        };
-        
+        else [self updateView:playingCardView forCard:playingcard];
+
     }
 }
 
 
-- (NSAttributedString* ) cardAttrString:(Card *)card {
-    if (card==nil)
-        return nil;
-    return [[NSAttributedString alloc] initWithString:card.contents];
-}
 @end

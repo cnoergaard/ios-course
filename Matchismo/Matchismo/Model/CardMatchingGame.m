@@ -89,15 +89,14 @@
     self.lastResult.score = 0;
     self.lastResult.otherCards = nil;
     if (!card.isUnplayable) {
-        if (!card.isFaceUp) {
           selectedCards = [[NSMutableArray alloc] init];
           for (Card *otherCard in self.cards) {
-              if (otherCard.isFaceUp && !otherCard.isUnplayable ){ 
+              if (otherCard.isFaceUp && !otherCard.isUnplayable && (otherCard!=card)) {
                   [selectedCards addObject:otherCard];
           }}
-               
+        self.lastResult.otherCards = selectedCards;
+        if (!card.isFaceUp) {
           if ([selectedCards count]==self.noOfCardsToMatch-1) {
-                  self.lastResult.otherCards = selectedCards;
                   int matchScore = [card match:selectedCards];
                   if (matchScore) {
                       for (Card *otherCard in selectedCards) {
