@@ -147,7 +147,7 @@
     else if (result.type == kMisMatch)
       ResultString =  @"does not match with";
     else
-      ResultString =  @"";
+      ResultString =  @"Select a card";
     [self updateResult:ResultString forCard:result.cardPlayed with:result.otherCards];
 }
 
