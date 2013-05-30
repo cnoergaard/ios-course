@@ -104,10 +104,14 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         if (indexPath) {
             if ([segue.identifier isEqualToString:@"Show Tag"]) {
-                if ([segue.destinationViewController respondsToSelector:@selector(setTag:)]) {
+                if ([segue.destinationViewController respondsToSelector:@selector(setPhotos:)]) {
+                    
                     NSString *tag = self.uniqueTags[indexPath.row];
-                    [segue.destinationViewController performSelector:@selector(setTag:) withObject:tag];
-                    [segue.destinationViewController setTitle:tag];
+                    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"tags CONTAINS[cd] %@",tag];
+                    NSArray *photos = [self.photos filteredArrayUsingPredicate:predicate];
+
+                    [segue.destinationViewController performSelector:@selector(setPhotos:) withObject:photos];
+                    [segue.destinationViewController setTitle:[tag capitalizedString]];
                 }
             }
         }

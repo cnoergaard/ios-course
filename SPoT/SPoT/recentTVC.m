@@ -8,6 +8,7 @@
 
 #import "recentTVC.h"
 #import "FlickrFetcher.h"
+#include "recentPhotos.h"
 
 @interface recentTVC ()
 @end
@@ -17,7 +18,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.photos = [FlickrFetcher latestGeoreferencedPhotos];
+    self.photos = [recentPhotos allPhotos];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    self.photos = [recentPhotos allPhotos];
+    [self.tableView reloadData];
 }
 
 @end
