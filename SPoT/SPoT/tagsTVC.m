@@ -8,8 +8,10 @@
 
 #import "tagsTVC.h"
 #import "FlickrFetcher.h"
+#import "ImageViewController.h"
 
-@interface tagsTVC ()
+@interface tagsTVC () <UISplitViewControllerDelegate>
+
 @property (strong, nonatomic) NSArray *photos; // of dicts
 @property (strong, nonatomic) NSArray *tags; // of NSString *
 @property (strong, nonatomic) NSMutableOrderedSet *uniqueTags; // of NSString *
@@ -18,6 +20,47 @@
 @end
 
 @implementation tagsTVC
+
+- (void)awakeFromNib
+{
+    self.splitViewController.delegate = self;
+}
+
+- (BOOL)splitViewController:(UISplitViewController *)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation
+{
+    return UIInterfaceOrientationIsPortrait(orientation);
+}
+
+- (void)splitViewController:(UISplitViewController *)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)pc
+{
+    barButtonItem.title = @"Master";
+    id detailViewController = [self.splitViewController.viewControllers lastObject];
+    self.popOver = pc;
+    [detailViewController setSplitBarViewBarButtonItem:barButtonItem];
+}
+
+- (void)splitViewController:(UISplitViewController *)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
+{
+   id detailViewController = [self.splitViewController.viewControllers lastObject];
+   self.popOver = nil;
+   [detailViewController setSplitBarViewBarButtonItem:nil];
+}
+
+- (id)splitViewDetailWithBarButtonItem
+{
+    id detail = [self.splitViewController.viewControllers lastObject];
+    if (![detail respondsToSelector:@selector(setSplitBarViewBarButtonItem:)] ||
+        ![detail respondsToSelector:@selector(splitBarViewBarButtonItem)])
+        detail = nil;
+    return detail;
+}
+
+- (void)transferSplitViewBarButtomItemToViewController:(id) destinationViewController
+{
+    UIBarButtonItem *splitViewbarButtonItem = [[self splitViewDetailWithBarButtonItem] splitBarViewBarButtonItem];
+    [[self splitViewDetailWithBarButtonItem] setSplitBarViewBarButtonItem:splitViewbarButtonItem];
+    if (splitViewbarButtonItem) [destinationViewController setSplitBarViewBarButtonItem:splitViewbarButtonItem];
+}
 
 - (NSArray *)photos
 {
@@ -105,6 +148,8 @@
         if (indexPath) {
             if ([segue.identifier isEqualToString:@"Show Tag"]) {
                 if ([segue.destinationViewController respondsToSelector:@selector(setPhotos:)]) {
+  //                  [self transferSplitViewBarButtomItemToViewController:segue.destinationViewController];
+
                     
                     NSString *tag = self.uniqueTags[indexPath.row];
                     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"tags CONTAINS[cd] %@",tag];
@@ -119,56 +164,5 @@
 }
 
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-}
 
 @end

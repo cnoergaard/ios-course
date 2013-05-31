@@ -12,6 +12,9 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) UIImageView *imageView;
 @property (nonatomic) BOOL doAutoZoom;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+
+
 @end
 
 @implementation ImageViewController
@@ -46,6 +49,8 @@
         }
     }
 }
+
+
 
 - (void) scrollViewDidZoom:(UIScrollView *)scrollView
 {
@@ -88,10 +93,23 @@
 {
     [super viewDidLoad];
     [self.scrollView addSubview:self.imageView];
-    self.scrollView.minimumZoomScale = 0.2;
-    self.scrollView.maximumZoomScale = 5.0;
+    self.scrollView.minimumZoomScale = 0.1;
+    self.scrollView.maximumZoomScale = 10.0;
     self.scrollView.delegate = self;
     [self resetImage];
 }
+
+-(void) setSplitBarViewBarButtonItem:(UIBarButtonItem *)button
+{
+    UIToolbar *toolbar = [self toolbar];
+    NSMutableArray *toolbarItems = [toolbar.items mutableCopy];
+    if (_splitBarViewBarButtonItem)
+        [toolbarItems removeObject:_splitBarViewBarButtonItem];
+    if (button)
+        [toolbarItems insertObject:button atIndex:0];
+    toolbar.items = toolbarItems;
+    _splitBarViewBarButtonItem = button;
+}
+
 
 @end

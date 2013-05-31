@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface tagsTVC : UITableViewController
-
+@property (weak, nonatomic) UIPopoverController *popOver;
 @end

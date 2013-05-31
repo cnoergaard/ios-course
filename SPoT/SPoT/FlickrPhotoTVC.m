@@ -9,6 +9,8 @@
 #import "FlickrPhotoTVC.h"
 #import "FlickrFetcher.h"
 #import "recentPhotos.h"
+#import "tagsTVC.h" // so that somebody responds to popOver
+#import "ImageViewController.h"
 
 @implementation FlickrPhotoTVC
 
@@ -35,17 +37,39 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         if (indexPath) {
             if ([segue.identifier isEqualToString:@"Show Image"]) {
+               [self transferSplitViewBarButtomItemToViewController:segue.destinationViewController];
                 if ([segue.destinationViewController respondsToSelector:@selector(setImageURL:)]) {
                     NSDictionary *photo = self.photos[indexPath.row];
                     [recentPhotos usePhoto:photo];
                     NSURL *url = [FlickrFetcher urlForPhoto:photo format:FlickrPhotoFormatLarge];
                     [segue.destinationViewController performSelector:@selector(setImageURL:) withObject:url];
                     [segue.destinationViewController setTitle:[self titleForRow:indexPath.row]];
+                    id delegate = self.splitViewController.delegate;
+                    if ([delegate respondsToSelector:@selector(popOver)])
+                      [[delegate popOver] dismissPopoverAnimated:YES];
                 }
             }
         }
     }
 }
+
+
+- (id)splitViewDetailWithBarButtonItem
+{
+    id detail = [self.splitViewController.viewControllers lastObject];
+    if (![detail respondsToSelector:@selector(setSplitBarViewBarButtonItem:)] ||
+        ![detail respondsToSelector:@selector(splitBarViewBarButtonItem)])
+        detail = nil;
+    return detail;
+}
+
+- (void)transferSplitViewBarButtomItemToViewController:(id) destinationViewController
+{
+    UIBarButtonItem *splitViewbarButtonItem = [[self splitViewDetailWithBarButtonItem] splitBarViewBarButtonItem];
+    [[self splitViewDetailWithBarButtonItem] setSplitBarViewBarButtonItem:splitViewbarButtonItem];
+    if (splitViewbarButtonItem) [destinationViewController setSplitBarViewBarButtonItem:splitViewbarButtonItem];
+}
+
 
 #pragma mark - UITableViewDataSource
 
