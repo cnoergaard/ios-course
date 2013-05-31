@@ -13,6 +13,7 @@
 @property (strong, nonatomic) UIImageView *imageView;
 @property (nonatomic) BOOL doAutoZoom;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *titleBarItem;
 
 
 @end
@@ -25,6 +26,12 @@
 {
     _imageURL = imageURL;
     [self resetImage];
+}
+
+- (void)setTitle:(NSString *)title
+{
+    super.title =title;
+    self.titleBarItem.title =title;
 }
 
 // fetches the data from the URL
@@ -97,6 +104,8 @@
     self.scrollView.maximumZoomScale = 10.0;
     self.scrollView.delegate = self;
     [self resetImage];
+    self.splitBarViewBarButtonItem = self.splitBarViewBarButtonItem;
+    self.title = self.title;
 }
 
 -(void) setSplitBarViewBarButtonItem:(UIBarButtonItem *)button

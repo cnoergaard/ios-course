@@ -33,7 +33,7 @@
 
 - (void)splitViewController:(UISplitViewController *)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)pc
 {
-    barButtonItem.title = @"Master";
+    barButtonItem.title = @"Photos";
     id detailViewController = [self.splitViewController.viewControllers lastObject];
     self.popOver = pc;
     [detailViewController setSplitBarViewBarButtonItem:barButtonItem];
@@ -44,22 +44,6 @@
    id detailViewController = [self.splitViewController.viewControllers lastObject];
    self.popOver = nil;
    [detailViewController setSplitBarViewBarButtonItem:nil];
-}
-
-- (id)splitViewDetailWithBarButtonItem
-{
-    id detail = [self.splitViewController.viewControllers lastObject];
-    if (![detail respondsToSelector:@selector(setSplitBarViewBarButtonItem:)] ||
-        ![detail respondsToSelector:@selector(splitBarViewBarButtonItem)])
-        detail = nil;
-    return detail;
-}
-
-- (void)transferSplitViewBarButtomItemToViewController:(id) destinationViewController
-{
-    UIBarButtonItem *splitViewbarButtonItem = [[self splitViewDetailWithBarButtonItem] splitBarViewBarButtonItem];
-    [[self splitViewDetailWithBarButtonItem] setSplitBarViewBarButtonItem:splitViewbarButtonItem];
-    if (splitViewbarButtonItem) [destinationViewController setSplitBarViewBarButtonItem:splitViewbarButtonItem];
 }
 
 - (NSArray *)photos
@@ -148,8 +132,6 @@
         if (indexPath) {
             if ([segue.identifier isEqualToString:@"Show Tag"]) {
                 if ([segue.destinationViewController respondsToSelector:@selector(setPhotos:)]) {
-  //                  [self transferSplitViewBarButtomItemToViewController:segue.destinationViewController];
-
                     
                     NSString *tag = self.uniqueTags[indexPath.row];
                     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"tags CONTAINS[cd] %@",tag];
