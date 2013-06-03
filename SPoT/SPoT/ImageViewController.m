@@ -14,6 +14,7 @@
 @property (nonatomic) BOOL doAutoZoom;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *titleBarItem;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
 
 @end
@@ -44,16 +45,25 @@
     if (self.scrollView) {
         self.scrollView.contentSize = CGSizeZero;
         self.imageView.image = nil;
+        [self.spinner startAnimating];
         
-        NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
-        UIImage *image = [[UIImage alloc] initWithData:imageData];
-        if (image) {
-            self.scrollView.zoomScale = 1.0;
-            self.scrollView.contentSize = image.size;
-            self.imageView.image = image;
-            self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
-            self.doAutoZoom = YES;
-        }
+        dispatch_queue_t downloadQueue = dispatch_queue_create("Download Queue", NULL);
+        dispatch_async(downloadQueue,
+                       ^{
+                           [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+                           NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
+                           [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                           UIImage *image = [[UIImage alloc] initWithData:imageData];
+                              dispatch_async(dispatch_get_main_queue(), ^{
+                                 if (image) {
+                                     self.scrollView.contentSize = image.size;
+                                     self.imageView.image = image;
+                                     self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+                                     [self setZoom];
+                                 }
+                                 [self.spinner stopAnimating];
+                              });
+                       });
     }
 }
 
@@ -64,13 +74,22 @@
     self.doAutoZoom = NO;
 }
 
+- (void) setZoom
+{
+    float zoomh = self.scrollView.bounds.size.height/self.imageView.image.size.height;
+    float zoomw = self.scrollView.bounds.size.width/self.imageView.image.size.width;
+    self.scrollView.zoomScale = MAX(zoomh,zoomw);
+    self.scrollView.minimumZoomScale = MIN(zoomh,zoomw);
+    self.scrollView.maximumZoomScale = 10.0;
+
+    self.doAutoZoom = YES;
+}
+
 - (void) viewDidLayoutSubviews
 {
     if (self.doAutoZoom)
     {
-      float zoomh = self.scrollView.bounds.size.height/self.imageView.image.size.height;
-      float zoomw = self.scrollView.bounds.size.width/self.imageView.image.size.width;
-      self.scrollView.zoomScale = MAX(zoomh,zoomw);
+      [self setZoom];
     }
 }
 

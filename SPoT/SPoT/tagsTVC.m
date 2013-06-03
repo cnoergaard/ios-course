@@ -12,9 +12,9 @@
 
 @interface tagsTVC () <UISplitViewControllerDelegate>
 
-@property (strong, nonatomic) NSArray *photos; // of dicts
 @property (strong, nonatomic) NSArray *tags; // of NSString *
 @property (strong, nonatomic) NSMutableOrderedSet *uniqueTags; // of NSString *
+@property (strong, nonatomic) NSArray *photos; // of dicts
 
 
 @end
@@ -24,6 +24,14 @@
 - (void)awakeFromNib
 {
     self.splitViewController.delegate = self;
+}
+
+ - (void)viewDidLoad
+{
+    [self.refreshControl addTarget:self
+                            action:@selector(refresh)
+                  forControlEvents:UIControlEventValueChanged];
+    [self refresh];
 }
 
 - (BOOL)splitViewController:(UISplitViewController *)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation
@@ -46,10 +54,30 @@
    [detailViewController setSplitBarViewBarButtonItem:nil];
 }
 
-- (NSArray *)photos
+- (IBAction)refresh
 {
-    if (!_photos) _photos = [FlickrFetcher stanfordPhotos];
-    return _photos;
+    [self.refreshControl beginRefreshing];
+    dispatch_queue_t downloadQueue = dispatch_queue_create("Flicker Fetcher Queue", NULL);
+    dispatch_async(downloadQueue,
+                   ^{
+                       [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+                       NSArray * photos = [FlickrFetcher stanfordPhotos];
+                       [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                       dispatch_async(dispatch_get_main_queue(),
+                                      ^{
+                                          self.photos = photos;
+                                          [self.refreshControl endRefreshing];
+                                      });
+                   });
+    
+}
+
+- (void)setPhotos:(NSArray *)photos
+{
+    _photos = photos;
+    self.tags = nil;
+    self.uniqueTags = nil;
+    [self.tableView reloadData];
 }
 
 - (NSArray *)tags

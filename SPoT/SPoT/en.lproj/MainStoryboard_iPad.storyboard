@@ -163,6 +163,9 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="SPoT" id="MEc-7O-2sJ"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="sPB-Kw-DSp">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="irJ-Wn-6R6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -176,6 +179,7 @@
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="x0s-F4-8hK"/>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PpX-Na-hGs"/>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qUl-e4-AkS">
                                 <items>
@@ -185,12 +189,14 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.67549568731798282" green="0.66029899467481068" blue="0.71025815217391308" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="PpX-Na-hGs" firstAttribute="bottom" secondItem="zQb-DZ-iji" secondAttribute="bottom" type="default" id="4Gn-M7-COY"/>
                             <constraint firstItem="PpX-Na-hGs" firstAttribute="trailing" secondItem="zQb-DZ-iji" secondAttribute="trailing" type="default" id="8JV-hE-YxO"/>
                             <constraint firstItem="PpX-Na-hGs" firstAttribute="leading" secondItem="zQb-DZ-iji" secondAttribute="leading" type="default" id="Cxt-Pb-2PX"/>
+                            <constraint firstItem="x0s-F4-8hK" firstAttribute="centerX" secondItem="qUl-e4-AkS" secondAttribute="centerX" type="default" id="LNj-nJ-cuc"/>
                             <constraint firstItem="qUl-e4-AkS" firstAttribute="trailing" secondItem="zQb-DZ-iji" secondAttribute="trailing" type="default" id="a7p-kY-G67"/>
+                            <constraint firstItem="x0s-F4-8hK" firstAttribute="centerY" secondItem="zQb-DZ-iji" secondAttribute="centerY" type="default" id="gLV-qM-GIH"/>
                             <constraint firstItem="qUl-e4-AkS" firstAttribute="leading" secondItem="zQb-DZ-iji" secondAttribute="leading" type="default" id="kQW-Wh-9cs"/>
                             <constraint firstItem="PpX-Na-hGs" firstAttribute="top" secondItem="qUl-e4-AkS" secondAttribute="bottom" type="default" id="xcM-d5-jCD"/>
                             <constraint firstItem="qUl-e4-AkS" firstAttribute="top" secondItem="zQb-DZ-iji" secondAttribute="top" type="default" id="yq2-Ry-250"/>
@@ -200,6 +206,7 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <connections>
                         <outlet property="scrollView" destination="PpX-Na-hGs" id="ZcH-4F-TV6"/>
+                        <outlet property="spinner" destination="x0s-F4-8hK" id="fas-6G-ZqW"/>
                         <outlet property="titleBarItem" destination="dNe-Pt-282" id="ugw-Dz-yp9"/>
                         <outlet property="toolbar" destination="qUl-e4-AkS" id="wAf-d4-EEQ"/>
                     </connections>
@@ -265,12 +272,16 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ImageViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="titleBarItem" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
             </relationships>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="UIRefreshControl" superclassName="UIControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIRefreshControl.h"/>
         </class>
         <class className="recentTVC" superclassName="FlickrPhotoTVC">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/recentTVC.h"/>

@@ -140,6 +140,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="SPoT" id="znM-EF-kbV"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="RhD-ag-uGT">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DWj-qn-oqI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -154,11 +157,14 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ysY-cr-yGr"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ENw-u5-3gR"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ysY-cr-yGr" firstAttribute="top" secondItem="2Nj-dm-aXA" secondAttribute="top" type="default" id="MUS-T6-8RO"/>
                             <constraint firstItem="ysY-cr-yGr" firstAttribute="leading" secondItem="2Nj-dm-aXA" secondAttribute="leading" type="default" id="N6X-G4-fxb"/>
+                            <constraint firstItem="ENw-u5-3gR" firstAttribute="leading" secondItem="2Nj-dm-aXA" secondAttribute="leading" constant="141" id="Pv0-aZ-5ja"/>
+                            <constraint firstItem="ENw-u5-3gR" firstAttribute="centerY" secondItem="ysY-cr-yGr" secondAttribute="centerY" type="default" id="VDW-Wv-97y"/>
                             <constraint firstItem="ysY-cr-yGr" firstAttribute="bottom" secondItem="2Nj-dm-aXA" secondAttribute="bottom" type="default" id="b2F-JU-mav"/>
                             <constraint firstItem="ysY-cr-yGr" firstAttribute="trailing" secondItem="2Nj-dm-aXA" secondAttribute="trailing" type="default" id="r6U-lL-BnC"/>
                         </constraints>
@@ -166,6 +172,7 @@
                     <navigationItem key="navigationItem" id="5Sq-F5-RMO"/>
                     <connections>
                         <outlet property="scrollView" destination="ysY-cr-yGr" id="hSa-Yz-ayZ"/>
+                        <outlet property="spinner" destination="ENw-u5-3gR" id="DU1-8G-xGc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PXP-Hp-yxz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -228,10 +235,16 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ImageViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="titleBarItem" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
             </relationships>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="UIRefreshControl" superclassName="UIControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIRefreshControl.h"/>
         </class>
         <class className="recentTVC" superclassName="FlickrPhotoTVC">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/recentTVC.h"/>
