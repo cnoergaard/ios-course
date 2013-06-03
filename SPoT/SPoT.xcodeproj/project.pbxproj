@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A34E9368175CEE58007BC4B7 /* ImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A34E9367175CEE58007BC4B7 /* ImageCache.m */; };
 		A35B3A5F17571ECD00F33346 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35B3A5E17571ECD00F33346 /* UIKit.framework */; };
 		A35B3A6117571ECD00F33346 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35B3A6017571ECD00F33346 /* Foundation.framework */; };
 		A35B3A6317571ECD00F33346 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35B3A6217571ECD00F33346 /* CoreGraphics.framework */; };
@@ -29,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A34E9366175CEE58007BC4B7 /* ImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCache.h; sourceTree = "<group>"; };
+		A34E9367175CEE58007BC4B7 /* ImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCache.m; sourceTree = "<group>"; };
 		A35B3A5B17571ECD00F33346 /* SPoT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPoT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A35B3A5E17571ECD00F33346 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A35B3A6017571ECD00F33346 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -113,6 +116,8 @@
 				A3F4B07317578D2800EE610B /* FlickrPhotoTVC.m */,
 				A3F4B07517578D6800EE610B /* ImageViewController.h */,
 				A3F4B07617578D7500EE610B /* ImageViewController.m */,
+				A34E9366175CEE58007BC4B7 /* ImageCache.h */,
+				A34E9367175CEE58007BC4B7 /* ImageCache.m */,
 				A3F4B06A17574ACA00EE610B /* spotTVC.h */,
 				A3F4B06B17574ACA00EE610B /* spotTVC.m */,
 				A35B3A6D17571ECD00F33346 /* AppDelegate.h */,
@@ -232,6 +237,7 @@
 				A3F4B07717578D7500EE610B /* ImageViewController.m in Sources */,
 				A36D5D9D1757A80A00C5C13B /* recentTVC.m in Sources */,
 				A35B3A911757D26500F33346 /* recentPhotos.m in Sources */,
+				A34E9368175CEE58007BC4B7 /* ImageCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 //
 
 #import "ImageViewController.h"
+#import "ImageCache.h"
 
 @interface ImageViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -45,14 +46,14 @@
     if (self.scrollView) {
         self.scrollView.contentSize = CGSizeZero;
         self.imageView.image = nil;
+        if (self.imageURL == nil)
+            return;
         [self.spinner startAnimating];
         
         dispatch_queue_t downloadQueue = dispatch_queue_create("Download Queue", NULL);
         dispatch_async(downloadQueue,
                        ^{
-                           [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-                           NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
-                           [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                           NSData *imageData = [ImageCache GetImageData:self.imageURL];
                            UIImage *image = [[UIImage alloc] initWithData:imageData];
                               dispatch_async(dispatch_get_main_queue(), ^{
                                  if (image) {
