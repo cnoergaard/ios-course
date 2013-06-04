@@ -119,6 +119,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.trackedViewName = [NSString stringWithFormat:@"ImageView: %@",[self.imageURL description]];
     [self.scrollView addSubview:self.imageView];
     self.scrollView.minimumZoomScale = 0.1;
     self.scrollView.maximumZoomScale = 10.0;

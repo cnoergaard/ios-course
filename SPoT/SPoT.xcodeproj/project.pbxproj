@@ -23,6 +23,9 @@
 		A35B3A8E1757261D00F33346 /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = A35B3A8C175722D100F33346 /* FlickrFetcher.m */; };
 		A35B3A911757D26500F33346 /* recentPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = A35B3A901757D26500F33346 /* recentPhotos.m */; };
 		A36D5D9D1757A80A00C5C13B /* recentTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A36D5D9C1757A80A00C5C13B /* recentTVC.m */; };
+		A37E80EA175DBBD000F8C3B1 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A37E80E8175DBBD000F8C3B1 /* libGoogleAnalytics.a */; };
+		A37E80EC175DBC0A00F8C3B1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A37E80EB175DBC0A00F8C3B1 /* CoreData.framework */; };
+		A37E80EE175DBC2300F8C3B1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A37E80ED175DBC2300F8C3B1 /* SystemConfiguration.framework */; };
 		A3F4B06C17574ACA00EE610B /* spotTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3F4B06B17574ACA00EE610B /* spotTVC.m */; };
 		A3F4B06F1757577E00EE610B /* tagsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3F4B06E1757577E00EE610B /* tagsTVC.m */; };
 		A3F4B07417578D2800EE610B /* FlickrPhotoTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3F4B07317578D2800EE610B /* FlickrPhotoTVC.m */; };
@@ -56,6 +59,14 @@
 		A35B3A901757D26500F33346 /* recentPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = recentPhotos.m; sourceTree = "<group>"; };
 		A36D5D9B1757A80A00C5C13B /* recentTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = recentTVC.h; sourceTree = "<group>"; };
 		A36D5D9C1757A80A00C5C13B /* recentTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = recentTVC.m; sourceTree = "<group>"; };
+		A37E80E1175DBB9E00F8C3B1 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		A37E80E2175DBB9E00F8C3B1 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		A37E80E3175DBB9E00F8C3B1 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		A37E80E4175DBB9E00F8C3B1 /* GAITransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransaction.h; sourceTree = "<group>"; };
+		A37E80E5175DBB9E00F8C3B1 /* GAITransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransactionItem.h; sourceTree = "<group>"; };
+		A37E80E8175DBBD000F8C3B1 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
+		A37E80EB175DBC0A00F8C3B1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A37E80ED175DBC2300F8C3B1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A3F4B06A17574ACA00EE610B /* spotTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spotTVC.h; sourceTree = "<group>"; };
 		A3F4B06B17574ACA00EE610B /* spotTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = spotTVC.m; sourceTree = "<group>"; };
 		A3F4B06D1757577E00EE610B /* tagsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tagsTVC.h; sourceTree = "<group>"; };
@@ -71,9 +82,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A37E80EE175DBC2300F8C3B1 /* SystemConfiguration.framework in Frameworks */,
+				A37E80EC175DBC0A00F8C3B1 /* CoreData.framework in Frameworks */,
 				A35B3A5F17571ECD00F33346 /* UIKit.framework in Frameworks */,
 				A35B3A6117571ECD00F33346 /* Foundation.framework in Frameworks */,
 				A35B3A6317571ECD00F33346 /* CoreGraphics.framework in Frameworks */,
+				A37E80EA175DBBD000F8C3B1 /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +97,8 @@
 		A35B3A5217571ECD00F33346 = {
 			isa = PBXGroup;
 			children = (
+				A37E80ED175DBC2300F8C3B1 /* SystemConfiguration.framework */,
+				A37E80EB175DBC0A00F8C3B1 /* CoreData.framework */,
 				A35B3A6417571ECD00F33346 /* SPoT */,
 				A35B3A5D17571ECD00F33346 /* Frameworks */,
 				A35B3A5C17571ECD00F33346 /* Products */,
@@ -110,6 +126,7 @@
 		A35B3A6417571ECD00F33346 /* SPoT */ = {
 			isa = PBXGroup;
 			children = (
+				A37E80E8175DBBD000F8C3B1 /* libGoogleAnalytics.a */,
 				A3F4B06D1757577E00EE610B /* tagsTVC.h */,
 				A3F4B06E1757577E00EE610B /* tagsTVC.m */,
 				A3F4B07017578D0000EE610B /* FlickrPhotoTVC.h */,
@@ -138,6 +155,7 @@
 		A35B3A6517571ECD00F33346 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A37E80E6175DBBAB00F8C3B1 /* Google analytics */,
 				A35B3A8D175722E200F33346 /* FlickrFetcher */,
 				A35B3A6617571ECD00F33346 /* SPoT-Info.plist */,
 				A35B3A6717571ECD00F33346 /* InfoPlist.strings */,
@@ -158,6 +176,18 @@
 				A35B3A8C175722D100F33346 /* FlickrFetcher.m */,
 			);
 			name = FlickrFetcher;
+			sourceTree = "<group>";
+		};
+		A37E80E6175DBBAB00F8C3B1 /* Google analytics */ = {
+			isa = PBXGroup;
+			children = (
+				A37E80E1175DBB9E00F8C3B1 /* GAI.h */,
+				A37E80E2175DBB9E00F8C3B1 /* GAITrackedViewController.h */,
+				A37E80E3175DBB9E00F8C3B1 /* GAITracker.h */,
+				A37E80E4175DBB9E00F8C3B1 /* GAITransaction.h */,
+				A37E80E5175DBB9E00F8C3B1 /* GAITransactionItem.h */,
+			);
+			name = "Google analytics";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,6 +365,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SPoT/SPoT-Prefix.pch";
 				INFOPLIST_FILE = "SPoT/SPoT-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/SPoT\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -346,6 +380,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SPoT/SPoT-Prefix.pch";
 				INFOPLIST_FILE = "SPoT/SPoT-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/SPoT\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

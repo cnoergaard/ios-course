@@ -164,8 +164,9 @@
                     NSString *tag = self.uniqueTags[indexPath.row];
                     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"tags CONTAINS[cd] %@",tag];
                     NSArray *photos = [self.photos filteredArrayUsingPredicate:predicate];
+                    NSArray *sortedPhotos = [photos sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:FLICKR_PHOTO_TITLE ascending:YES]]];
 
-                    [segue.destinationViewController performSelector:@selector(setPhotos:) withObject:photos];
+                    [segue.destinationViewController performSelector:@selector(setPhotos:) withObject:sortedPhotos];
                     [segue.destinationViewController setTitle:[tag capitalizedString]];
                 }
             }

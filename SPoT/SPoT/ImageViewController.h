@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GAITrackedViewController.h"
 
-@interface ImageViewController : UIViewController
+
+@interface ImageViewController : GAITrackedViewController
 
 // the Model for this VC
 // simply the URL of a UIImage-compatible image (jpg, png, etc.)
