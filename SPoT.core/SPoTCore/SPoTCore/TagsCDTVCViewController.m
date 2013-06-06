@@ -56,7 +56,7 @@
     if (managedObjectContext) {
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
         request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
-        request.predicate = nil; // all Tags
+        request.predicate = [NSPredicate predicateWithFormat:@"not name in %@",@[@"portrait",@"landscape",@"cs193pspot"]];
         self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     } else {
         self.fetchedResultsController = nil;

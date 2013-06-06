@@ -107,11 +107,11 @@
             </objects>
             <point key="canvasLocation" x="6011" y="-6884"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller-->
         <scene sceneID="JBk-D4-fUa">
             <objects>
                 <navigationController id="gs4-L9-ZC5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="YwB-bF-Dlx"/>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="YwB-bF-Dlx"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="YC7-4P-7O2">
@@ -140,6 +140,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="gs4-L9-ZC5" kind="relationship" relationship="viewControllers" id="1fl-03-fCb"/>
+                        <segue destination="cn7-b4-BBA" kind="relationship" relationship="viewControllers" id="6JQ-ZL-05P"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AA7-dn-McK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -156,25 +157,15 @@
                         <subviews>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="EE4-Xu-r9K"/>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ime-4a-qSS"/>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mMO-eF-2sS">
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="jqF-Hr-Ko3"/>
-                                    <barButtonItem title="Item" style="plain" id="Yce-yx-zyd"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="TJ3-gW-iwf"/>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="0.67549568729999998" green="0.66029899469999997" blue="0.71025815219999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Ime-4a-qSS" firstAttribute="trailing" secondItem="D0a-YW-X9S" secondAttribute="trailing" type="default" id="AXf-bj-19z"/>
-                            <constraint firstItem="EE4-Xu-r9K" firstAttribute="centerX" secondItem="mMO-eF-2sS" secondAttribute="centerX" type="default" id="Ic8-Tt-KRS"/>
                             <constraint firstItem="Ime-4a-qSS" firstAttribute="leading" secondItem="D0a-YW-X9S" secondAttribute="leading" type="default" id="Iz2-lj-2eV"/>
-                            <constraint firstItem="mMO-eF-2sS" firstAttribute="top" secondItem="D0a-YW-X9S" secondAttribute="top" type="default" id="Oxg-5N-Rpe"/>
-                            <constraint firstItem="mMO-eF-2sS" firstAttribute="trailing" secondItem="D0a-YW-X9S" secondAttribute="trailing" type="default" id="P7j-nQ-Em2"/>
-                            <constraint firstItem="mMO-eF-2sS" firstAttribute="leading" secondItem="D0a-YW-X9S" secondAttribute="leading" type="default" id="WGB-Oc-gkC"/>
                             <constraint firstItem="EE4-Xu-r9K" firstAttribute="centerY" secondItem="D0a-YW-X9S" secondAttribute="centerY" type="default" id="Wpf-r1-roh"/>
                             <constraint firstItem="Ime-4a-qSS" firstAttribute="bottom" secondItem="D0a-YW-X9S" secondAttribute="bottom" type="default" id="dtL-sB-4VB"/>
-                            <constraint firstItem="Ime-4a-qSS" firstAttribute="top" secondItem="mMO-eF-2sS" secondAttribute="bottom" type="default" id="jPo-8J-m3P"/>
+                            <constraint firstItem="Ime-4a-qSS" firstAttribute="top" secondItem="D0a-YW-X9S" secondAttribute="top" type="default" id="fY5-SC-nJa"/>
+                            <constraint firstItem="EE4-Xu-r9K" firstAttribute="centerX" secondItem="Ime-4a-qSS" secondAttribute="centerX" type="default" id="tZJ-MY-HdI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cal-Up-DlD"/>
@@ -182,13 +173,80 @@
                     <connections>
                         <outlet property="scrollView" destination="Ime-4a-qSS" id="dze-4X-MNw"/>
                         <outlet property="spinner" destination="EE4-Xu-r9K" id="bfq-7Q-8pi"/>
-                        <outlet property="titleBarItem" destination="Yce-yx-zyd" id="3te-RY-uIR"/>
-                        <outlet property="toolbar" destination="mMO-eF-2sS" id="U8T-lj-Akg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LJ1-9C-bk5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6557" y="-6031"/>
+            <point key="canvasLocation" x="7083" y="-6031"/>
+        </scene>
+        <!--Recent PhotosCDTVC-->
+        <scene sceneID="ssU-zA-TOn">
+            <objects>
+                <tableViewController id="cfk-pK-USp" customClass="RecentPhotosCDTVC" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="vxr-uk-i8p">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Photo" textLabel="j2u-uz-0QD" detailTextLabel="3vi-1n-PIC" style="IBUITableViewCellStyleSubtitle" id="sH4-b6-Jak">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="j2u-uz-0QD">
+                                            <rect key="frame" x="10" y="2" width="38" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3vi-1n-PIC">
+                                            <rect key="frame" x="10" y="24" width="36" height="18"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="uXN-No-rjk" kind="push" identifier="Show Image" id="NX8-fk-ApU"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="cfk-pK-USp" id="n36-YZ-rzV"/>
+                            <outlet property="delegate" destination="cfk-pK-USp" id="M4X-0W-13W"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="hXh-TX-yJG"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NKa-M6-eXI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5792" y="-6006"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Y8k-Yh-cRD">
+            <objects>
+                <navigationController id="cn7-b4-BBA" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="recents" id="Ja5-sO-fsA"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7ln-OX-NTq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cfk-pK-USp" kind="relationship" relationship="rootViewController" id="geX-MD-HpP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PbG-Q0-yep" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5266" y="-6006"/>
         </scene>
     </scenes>
     <classes>
@@ -207,8 +265,14 @@
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
-        <class className="PhotosByTagCDTVC" superclassName="CoreDataTableViewController">
+        <class className="PhotosByTagCDTVC" superclassName="PhotosCDTVC">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotosByTagCDTVC.h"/>
+        </class>
+        <class className="PhotosCDTVC" superclassName="CoreDataTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotosCDTVC.h"/>
+        </class>
+        <class className="RecentPhotosCDTVC" superclassName="PhotosCDTVC">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecentPhotosCDTVC.h"/>
         </class>
         <class className="StanfordTagCDTVCViewController" superclassName="TagsCDTVCViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StanfordTagCDTVCViewController.h"/>
@@ -225,4 +289,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="NX8-fk-ApU"/>
+    </inferredMetricsTieBreakers>
 </document>

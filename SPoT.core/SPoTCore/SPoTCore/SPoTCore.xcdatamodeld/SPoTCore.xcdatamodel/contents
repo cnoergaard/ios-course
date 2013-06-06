@@ -19,9 +19,10 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="tag" inverseEntity="Photo" syncable="YES"/>
     </entity>
+    <fetchRequest name="GetTags" entity="Tag" predicateString="name != &quot;portrait&quot; AND name != &quot;landscape&quot; AND name != &quot;cs193pspot&quot;"/>
     <elements>
         <element name="Photo" positionX="160" positionY="192" width="128" height="178"/>
-        <element name="Tag" positionX="502" positionY="267" width="128" height="73"/>
         <element name="Photographer" positionX="475" positionY="474" width="128" height="73"/>
+        <element name="Tag" positionX="502" positionY="267" width="128" height="73"/>
     </elements>
 </model>

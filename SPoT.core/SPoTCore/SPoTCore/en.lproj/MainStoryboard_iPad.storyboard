@@ -49,7 +49,7 @@
             </objects>
             <point key="canvasLocation" x="1573" y="-2298"/>
         </scene>
-        <!--Recent PhotosCDTVC - Item-->
+        <!--Recent PhotosCDTVC-->
         <scene sceneID="sWd-dT-5Lh">
             <objects>
                 <tableViewController id="26e-ri-o0P" customClass="RecentPhotosCDTVC" sceneMemberID="viewController">
@@ -92,7 +92,7 @@
                             <outlet property="delegate" destination="26e-ri-o0P" id="27W-8b-pal"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="M5K-AD-OTo"/>
+                    <tabBarItem key="tabBarItem" systemItem="recents" id="M5K-AD-OTo"/>
                     <navigationItem key="navigationItem" id="PxR-ve-gpG"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="taO-ly-yGb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -147,11 +147,11 @@
             </objects>
             <point key="canvasLocation" x="1013" y="-2308"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller-->
         <scene sceneID="aFE-gi-5ib">
             <objects>
                 <navigationController id="vCb-ZO-TqX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="1j0-Mo-wQx"/>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="1j0-Mo-wQx"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yo5-xj-tEh">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>

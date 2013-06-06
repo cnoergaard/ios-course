@@ -21,6 +21,21 @@
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Photo *photo = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    if (photo.thumbnail==nil)
+    {
+        NSURL *url = [NSURL URLWithString:photo.thumbnailURL];
+        dispatch_queue_t downloadQueue = dispatch_queue_create("Thumbnail - Download Queue", NULL);
+        dispatch_async(downloadQueue,
+                       ^{
+                          [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+                          NSData *imageData = [[NSData alloc] initWithContentsOfURL:url];
+                          [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                          [photo.managedObjectContext performBlock:^{
+                              photo.thumbnail = imageData;
+                          }];
+                       });
+    
+    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -35,6 +50,8 @@
     
     cell.textLabel.text = photo.title;
     cell.detailTextLabel.text = photo.subtitle;
+    if (photo.thumbnail!=nil)
+        cell.imageView.image = [UIImage imageWithData:photo.thumbnail];
     
     return cell;
     
