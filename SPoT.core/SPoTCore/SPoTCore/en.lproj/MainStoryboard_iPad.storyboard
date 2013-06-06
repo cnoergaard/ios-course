@@ -82,6 +82,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="arV-0i-kXZ" kind="replace" identifier="Show Image" splitViewControllerTargetIndex="1" id="UBI-jz-wP8"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -94,7 +97,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="taO-ly-yGb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="941" y="-1298"/>
+            <point key="canvasLocation" x="794" y="-1318"/>
         </scene>
         <!--Stanford TagCDTVC View Controller-->
         <scene sceneID="fX4-lC-Cpn">
@@ -216,8 +219,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.67549568729999998" green="0.66029899469999997" blue="0.71025815219999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Qmi-8N-Cwl" firstAttribute="bottom" secondItem="jH2-Aq-mpe" secondAttribute="bottom" type="default" id="21n-E9-TGj"/>
                             <constraint firstItem="tlW-fa-cju" firstAttribute="leading" secondItem="jH2-Aq-mpe" secondAttribute="leading" type="default" id="7z8-Eo-S1g"/>
+                            <constraint firstAttribute="bottom" secondItem="Qmi-8N-Cwl" secondAttribute="bottom" constant="-1" id="Bzg-nV-40G"/>
                             <constraint firstItem="Qmi-8N-Cwl" firstAttribute="top" secondItem="tlW-fa-cju" secondAttribute="bottom" type="default" id="Yuj-on-WUH"/>
                             <constraint firstItem="Qmi-8N-Cwl" firstAttribute="leading" secondItem="jH2-Aq-mpe" secondAttribute="leading" type="default" id="Z2g-3e-3N0"/>
                             <constraint firstItem="eU7-1F-GSY" firstAttribute="centerY" secondItem="jH2-Aq-mpe" secondAttribute="centerY" type="default" id="ZAb-KP-zqD"/>
@@ -282,6 +285,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Z2H-UF-k9i"/>
+        <segue reference="UBI-jz-wP8"/>
     </inferredMetricsTieBreakers>
 </document>

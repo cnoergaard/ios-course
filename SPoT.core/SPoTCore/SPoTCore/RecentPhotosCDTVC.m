@@ -16,6 +16,11 @@
 
 @implementation RecentPhotosCDTVC
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [self useDemoDocument];
+}
+
 #pragma mark - Properties
 
 
@@ -23,13 +28,15 @@
 // Note that we have the NSManagedObjectContext we need by asking our Model (the Photographer) for it.
 // Uses that to build and set our NSFetchedResultsController property inherited from CoreDataTableViewController.
 
+
 - (void)setupFetchedResultsController
 {
     if (self.managedObjectContext) {
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Photo"];
         
-        request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"lastAccess" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
+        request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"lastAccess" ascending:NO selector:@selector(compare:)]];
         request.predicate = [NSPredicate predicateWithFormat:@"lastAccess != nil"];
+        request.fetchLimit = 10;
         
         self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                                             managedObjectContext:self.managedObjectContext
