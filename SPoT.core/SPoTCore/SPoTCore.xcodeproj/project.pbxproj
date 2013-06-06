@@ -186,9 +186,9 @@
 		A37E8126175FAEAD00F8C3B1 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				A37E8127175FAEC900F8C3B1 /* SPoTCore.xcdatamodeld */,
 				A37E8169175FE6F600F8C3B1 /* ManagedDocumentCache.h */,
 				A37E816A175FE6F600F8C3B1 /* ManagedDocumentCache.m */,
-				A37E8127175FAEC900F8C3B1 /* SPoTCore.xcdatamodeld */,
 				A37E8172175FEF6B00F8C3B1 /* Photo.h */,
 				A37E8173175FEF6B00F8C3B1 /* Photo.m */,
 				A37E8142175FBD4D00F8C3B1 /* Photo+Flickr.h */,
@@ -436,6 +436,7 @@
 				A37E8120175FAB7000F8C3B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
