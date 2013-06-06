@@ -18,6 +18,10 @@
 
 @implementation PhotosCDTVC
 
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Photo *photo = [self.fetchedResultsController objectAtIndexPath:indexPath];
+}
 
 #pragma mark - UITableViewDataSource
 
